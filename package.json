@@ -1,0 +1,40 @@
+{
+  "name": "markdown-it-incremental-dom-renderer",
+  "version": "0.1.0",
+  "description": "markdown-it renderer plugin by using Incremental DOM.",
+  "main": "dist/markdown-it-incremental-dom-renderer.js",
+  "author": {
+    "name": "Yuki Hattori",
+    "url": "https://github.com/yhatt"
+  },
+  "keywords": [
+    "markdown-it-plugin",
+    "markdown-it",
+    "markdown",
+    "incremental-dom"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yhatt/markdown-it-incremental-dom-renderer"
+  },
+  "scripts": {
+    "lint": "eslint --cache .",
+    "test": "NODE_ENV=test mocha"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-preset-es2015": "^6.18.0",
+    "chai": "^3.5.0",
+    "eslint": "^3.10.1",
+    "eslint-config-airbnb-base": "^10.0.1",
+    "eslint-plugin-import": "^2.2.0",
+    "incremental-dom": "^0.5.0",
+    "markdown-it": ">=4.0.0",
+    "mocha": "^3.1.2"
+  },
+  "peerDependencies": {
+    "incremental-dom": "^0.5.0",
+    "markdown-it": ">=4.0.0"
+  }
+}

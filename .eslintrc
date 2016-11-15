@@ -1,0 +1,10 @@
+env:
+  node: true
+  es6: true
+
+extends: airbnb-base
+
+rules:
+  semi:
+    - error
+    - never
