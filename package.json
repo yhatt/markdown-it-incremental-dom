@@ -18,9 +18,12 @@
     "url": "https://github.com/yhatt/markdown-it-incremental-dom-renderer"
   },
   "scripts": {
-    "build": "babel src --out-dir lib",
+    "build": "npm-run-all lint:nocache clean --parallel build:*",
+    "build:commonjs": "babel src --out-dir lib",
+    "build:browser": "cat README.md",
     "clean": "rimraf lib dist",
     "lint": "eslint --cache .",
+    "lint:nocache": "eslint .",
     "test": "NODE_ENV=test mocha"
   },
   "license": "MIT",
@@ -34,7 +37,8 @@
     "incremental-dom": "^0.5.0",
     "markdown-it": ">=4.0.0",
     "mocha": "^3.1.2",
-    "rimraf": "^2.5.4"
+    "rimraf": "^2.5.4",
+    "webpack": "^1.13.3"
   },
   "peerDependencies": {
     "incremental-dom": "^0.5.0",
