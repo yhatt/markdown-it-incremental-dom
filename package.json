@@ -2,7 +2,8 @@
   "name": "markdown-it-incremental-dom-renderer",
   "version": "0.1.0",
   "description": "markdown-it renderer plugin by using Incremental DOM.",
-  "main": "dist/markdown-it-incremental-dom-renderer.js",
+  "main": "lib/markdown-it-incremental-dom-renderer.js",
+  "browser": "dist/markdown-it-incremental-dom-renderer.js",
   "author": {
     "name": "Yuki Hattori",
     "url": "https://github.com/yhatt"
@@ -18,10 +19,12 @@
     "url": "https://github.com/yhatt/markdown-it-incremental-dom-renderer"
   },
   "scripts": {
-    "build": "npm-run-all lint:nocache clean --parallel build:*",
-    "build:commonjs": "babel src --out-dir lib",
-    "build:browser": "cat README.md",
-    "clean": "rimraf lib dist",
+    "build": "npm-run-all lint:nocache --parallel build:*",
+    "build:commonjs": "npm run clean:lib && babel src --out-dir lib",
+    "build:browser": "npm run clean:dist && webpack",
+    "clean": "npm-run-all --parallel clean:*",
+    "clean:lib": "rimraf lib",
+    "clean:dist": "rimraf dist",
     "lint": "eslint --cache .",
     "lint:nocache": "eslint .",
     "test": "NODE_ENV=test mocha"
@@ -29,6 +32,7 @@
   "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.18.0",
+    "babel-loader": "^6.2.7",
     "babel-preset-es2015": "^6.18.0",
     "chai": "^3.5.0",
     "eslint": "^3.10.1",
