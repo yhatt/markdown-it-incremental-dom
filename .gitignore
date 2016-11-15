@@ -1,7 +1,5 @@
-build/**/*
-dist/**/*
-!build/.keep
-!dist/.keep
+lib
+dist
 
 ########## gitignore.io ##########
 # Created by https://www.gitignore.io/api/node,windows,macos,linux,sublimetext,emacs,vim,visualstudiocode
