@@ -5,6 +5,9 @@ env:
 extends: airbnb-base
 
 rules:
+  class-methods-use-this: off
+  func-names: off
+  no-param-reassign: off
   semi:
     - error
     - never

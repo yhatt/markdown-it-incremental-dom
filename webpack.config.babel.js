@@ -15,6 +15,7 @@ export default {
   module: {
     loaders: [
       { test: /\.js$/, exclude: /node_modules/, loaders: ['babel'] },
+      { test: /\.json$/, loaders: ['json'] },
     ],
   },
 }
