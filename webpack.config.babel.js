@@ -4,10 +4,12 @@ import webpack from 'webpack'
 import packageConfig from './package.json'
 
 export default {
-  entry: path.resolve(__dirname, 'src', path.basename(packageConfig.browser)),
+  entry: './entry.js',
   output: {
     path: path.resolve(__dirname, path.dirname(packageConfig.browser)),
     filename: path.basename(packageConfig.browser),
+    libraryTarget: 'umd',
+    umdNamedDefine: true,
   },
   plugins: [
     new webpack.optimize.UglifyJsPlugin(),
