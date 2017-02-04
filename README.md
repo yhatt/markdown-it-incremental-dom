@@ -4,6 +4,8 @@
 
 # markdown-it-incremental-dom
 
+[![Build Status](https://travis-ci.org/yhatt/markdown-it-incremental-dom.svg?branch=master)](https://travis-ci.org/yhatt/markdown-it-incremental-dom)
+
 A [markdown-it](https://github.com/markdown-it/markdown-it) renderer plugin by using [Incremental DOM](https://github.com/google/incremental-dom).
 
 ## Requirement
