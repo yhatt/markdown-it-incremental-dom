@@ -19,10 +19,10 @@
     "url": "https://github.com/yhatt/markdown-it-incremental-dom"
   },
   "scripts": {
-    "build": "npm-run-all --parallel build:*",
-    "build:commonjs": "npm run clean:lib && babel src --out-dir lib",
-    "build:browser": "npm run clean:dist && webpack",
-    "clean": "npm-run-all --parallel clean:*",
+    "build": "cross-env NPM_EXECPATH='yarn run' npm-run-all --parallel build:*",
+    "build:commonjs": "yarn run clean:lib && babel src --out-dir lib",
+    "build:browser": "yarn run clean:dist && webpack",
+    "clean": "cross-env NPM_EXECPATH='yarn run' npm-run-all --parallel clean:*",
     "clean:lib": "rimraf lib",
     "clean:dist": "rimraf dist",
     "lint": "eslint --cache .",
