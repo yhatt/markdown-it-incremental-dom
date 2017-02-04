@@ -1,10 +1,10 @@
 import assert from 'assert'
-import markdownIt from 'markdown-it'
-import incrementalDOM from 'incremental-dom'
-import iDOMRenderer from '../src/markdown-it-incremental-dom'
+import MarkdownIt from 'markdown-it'
+import IncrementalDOM from 'incremental-dom'
+import MarkdownItIncrementalDOM from '../src/markdown-it-incremental-dom'
 
 describe('markdown-it', () => {
-  const md = markdownIt().use(iDOMRenderer, incrementalDOM)
+  const md = MarkdownIt().use(MarkdownItIncrementalDOM, IncrementalDOM)
 
   describe('.renderToIncrementalDOM', () => {
     const { renderToIncrementalDOM } = md

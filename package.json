@@ -1,6 +1,6 @@
 {
   "name": "markdown-it-incremental-dom",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "description": "markdown-it renderer plugin by using Incremental DOM.",
   "main": "lib/markdown-it-incremental-dom.js",
   "browser": "dist/markdown-it-incremental-dom.js",
@@ -19,7 +19,7 @@
     "url": "https://github.com/yhatt/markdown-it-incremental-dom"
   },
   "scripts": {
-    "build": "npm-run-all lint:nocache --parallel build:*",
+    "build": "npm-run-all --parallel build:*",
     "build:commonjs": "npm run clean:lib && babel src --out-dir lib",
     "build:browser": "npm run clean:dist && webpack",
     "clean": "npm-run-all --parallel clean:*",
