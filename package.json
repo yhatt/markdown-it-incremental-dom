@@ -27,7 +27,8 @@
     "clean:dist": "rimraf dist",
     "lint": "eslint --cache .",
     "lint:nocache": "eslint .",
-    "test": "cross-env NODE_ENV=test mocha"
+    "test": "cross-env NODE_ENV=test mocha",
+    "test:coverage": "cross-env NODE_ENV=test nyc mocha"
   },
   "license": "MIT",
   "devDependencies": {
@@ -54,5 +55,22 @@
   },
   "dependencies": {
     "htmlparser2": "^3.9.2"
+  },
+  "nyc": {
+    "include": [
+      "src"
+    ],
+    "require": [
+      "babel-register"
+    ],
+    "reporter": [
+      "text",
+      "lcov"
+    ],
+    "cache": false,
+    "sourceMap": false,
+    "instrument": false,
+    "check-coverage": true,
+    "lines": 95
   }
 }

@@ -4,4 +4,5 @@ cache: yarn
 sudo: false
 
 script:
-  - "yarn test"
+  - "yarn lint:nocache"
+  - "yarn test:coverage"
