@@ -1,27 +1,31 @@
-import renderer from './renderer/renderer'
+import Renderer from 'markdown-it/lib/renderer'
+import rendererMixin from './mixins/renderer'
 
-const markdownIncrementalDOM = function (md = null, baseIncrementalDOM = null) {
-  let incrementalDOM = baseIncrementalDOM
-  if (this.constructor === markdownIncrementalDOM) incrementalDOM = md
+const mixinTo = (base, mixin) =>
+  (Object.assign(Object.create(Object.getPrototypeOf(base)), base, mixin))
 
-  // Use window.IncrementalDOM in browser
-  if (!incrementalDOM && typeof window !== 'undefined') incrementalDOM = window.IncrementalDOM
+const injectMarkdownItIncrementalDOM = (md, incrementalDOM) => {
+  const mixin = rendererMixin(incrementalDOM)
 
-  const IncrementalDOMrendererClass = renderer(incrementalDOM)
-  const incrementalDOMrenderer = new IncrementalDOMrendererClass()
-
-  // When instance would create by `new markdownIncrementalDOM(baseIncrementalDOM)`
-  if (this.constructor === markdownIncrementalDOM) return incrementalDOMrenderer
-
-  // When this is called as markdown-it plugin
   md.renderToIncrementalDOM = function (src, env = {}) {
-    return incrementalDOMrenderer.render(this.parse(src, env), this.options, env)
+    return mixinTo(this.renderer, mixin).render(this.parse(src, env), this.options, env)
   }
   md.renderInlineToIncrementalDOM = function (src, env = {}) {
-    return incrementalDOMrenderer.render(this.parseInline(src, env), this.options, env)
+    return mixinTo(this.renderer, mixin).render(this.parseInline(src, env), this.options, env)
   }
-
-  return incrementalDOMrenderer
 }
 
-export { markdownIncrementalDOM as default }
+const processIncrementalDOMArgument = incrementalDOM =>
+  ((!incrementalDOM && typeof window !== 'undefined') ? window.IncrementalDOM : incrementalDOM)
+
+const markdownitIncrementalDOM = function (...args) {
+  // new markdownitIncrementalDOM(baseIncrementalDOM)
+  if (this.constructor === markdownitIncrementalDOM) {
+    return mixinTo(new Renderer(), rendererMixin(processIncrementalDOMArgument(args[0])))
+  }
+
+  // MarkdownIt().use(markdownitIncrementalDOM, baseIncrementalDOM)
+  return injectMarkdownItIncrementalDOM(args[0], processIncrementalDOMArgument(args[1]))
+}
+
+export { markdownitIncrementalDOM as default }
