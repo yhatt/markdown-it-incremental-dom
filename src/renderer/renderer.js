@@ -1,30 +1,23 @@
-import { escapeHtml } from 'markdown-it/lib/common/utils'
-import Renderer from 'markdown-it/lib/renderer'
 import { Parser } from 'htmlparser2'
+import Renderer from 'markdown-it/lib/renderer'
+import { escapeHtml } from 'markdown-it/lib/common/utils'
+import flatten from 'lodash/flatten'
+import toPairs from 'lodash/toPairs'
 
 export default function (incrementalDom) {
   const { elementOpen, elementClose, elementVoid, text } = incrementalDom
 
   const iDOMParser = new Parser({
-    onopentag: (name, attrs) => {
-      const args = Object.keys(attrs).reduce((prev, k) => prev.concat(k, attrs[k]), [])
-      elementOpen(name, '', [], ...args)
-    },
+    onopentag: (name, attrs) => elementOpen(name, '', [], ...flatten(toPairs(attrs))),
     ontext: text,
     onclosetag: elementClose,
   })
 
-  const wrapIncrementalDOM = (html) => {
-    if (typeof html === 'function') return html()
-    return iDOMParser.parseComplete(html)
-  }
+  const wrapIncrementalDOM = html => ((typeof html === 'function') ? html() : iDOMParser.parseComplete(html))
 
   return class extends Renderer {
     renderAttrsToArray(token) {
-      if (!token.attrs) return []
-
-      return token.attrs.reduce((prev, attr) =>
-        prev.concat(escapeHtml(attr[0]), escapeHtml(attr[1])), [])
+      return token.attrs ? flatten(token.attrs).map(v => escapeHtml(v)) : []
     }
 
     renderInline(tokens, options, env) {

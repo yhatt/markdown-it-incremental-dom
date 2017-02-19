@@ -42,7 +42,6 @@
     "eslint-config-airbnb-base": "^10.0.1",
     "eslint-plugin-import": "^2.2.0",
     "incremental-dom": "^0.5.1",
-    "lodash": "^4.17.4",
     "markdown-it": ">=4.0.0",
     "mocha": "^3.2.0",
     "npm-run-all": "^3.1.2",
@@ -54,7 +53,8 @@
     "markdown-it": ">=4.0.0"
   },
   "dependencies": {
-    "htmlparser2": "^3.9.2"
+    "htmlparser2": "^3.9.2",
+    "lodash": "^4.17.4"
   },
   "nyc": {
     "include": [
