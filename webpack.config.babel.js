@@ -15,9 +15,15 @@ export default {
     new webpack.optimize.UglifyJsPlugin(),
   ],
   module: {
-    loaders: [
-      { test: /\.js$/, exclude: /node_modules/, loaders: ['babel'] },
-      { test: /\.json$/, loaders: ['json'] },
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        options: {
+          presets: [['es2015', { modules: false }]],
+        },
+      },
     ],
   },
 }
