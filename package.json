@@ -63,7 +63,6 @@
     "markdown-it": ">=4.0.0"
   },
   "dependencies": {
-    "htmlparser2": "^3.9.2",
-    "lodash": "^4.17.4"
+    "htmlparser2": "^3.9.2"
   }
 }
