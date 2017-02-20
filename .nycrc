@@ -1,0 +1,17 @@
+{
+  "include": [
+    "src"
+  ],
+  "require": [
+    "babel-register"
+  ],
+  "reporter": [
+    "text",
+    "lcov"
+  ],
+  "cache": false,
+  "sourceMap": false,
+  "instrument": false,
+  "check-coverage": true,
+  "lines": 95
+}
