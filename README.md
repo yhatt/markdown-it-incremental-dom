@@ -109,6 +109,14 @@ $ yarn install
 $ yarn build
 ```
 
+### Publish to npm
+
+```bash
+$ npm publish
+```
+
+:warning: ***CAUTION:*** You should not use `yarn publish` when you would publish to npm. It would cause publishing wrong / empty build because the building process on `prepublish` will run after packaging.
+
 ## Author
 
 Yuki Hattori ([@yhatt](https://github.com/yhatt/))
