@@ -1,6 +1,6 @@
 {
   "name": "markdown-it-incremental-dom",
-  "version": "0.1.0-dev",
+  "version": "0.0.5",
   "description": "markdown-it renderer plugin by using Incremental DOM.",
   "main": "lib/markdown-it-incremental-dom.js",
   "browser": "dist/markdown-it-incremental-dom.js",
@@ -27,7 +27,7 @@
     "clean:dist": "rimraf dist",
     "lint": "eslint --cache .",
     "lint:nocache": "eslint .",
-    "prepublish": "in-publish && yarn run prepublishOnly || true",
+    "prepublish": "! in-publish && exit 0 || yarn run prepublishOnly",
     "prepublishOnly": "cross-env NPM_EXECPATH='yarn run' npm-run-all --parallel lint:nocache test:coverage --sequential build",
     "test": "cross-env NODE_ENV=test mocha",
     "test:coverage": "cross-env NODE_ENV=test nyc mocha"
