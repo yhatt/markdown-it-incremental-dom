@@ -1,4 +1,3 @@
-import Renderer from 'markdown-it/lib/renderer'
 import rendererMixin from './mixins/renderer'
 
 const mixinTo = (base, mixin) =>
@@ -7,7 +6,7 @@ const mixinTo = (base, mixin) =>
 const processIncrementalDOMArgument = incrementalDOM =>
   ((!incrementalDOM && typeof window !== 'undefined') ? window.IncrementalDOM : incrementalDOM)
 
-export default function(md, target) {
+export default function (md, target) {
   const incrementalDOM = processIncrementalDOMArgument(target)
   const mixin = rendererMixin(incrementalDOM)
 
