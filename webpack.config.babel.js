@@ -1,6 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import path from 'path'
-import webpack from 'webpack'
 import packageConfig from './package.json'
 
 export default {

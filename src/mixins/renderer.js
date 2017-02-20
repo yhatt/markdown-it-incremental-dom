@@ -19,7 +19,7 @@ export default function (incrementalDom) {
     onclosetag: elementClose,
   }, { decodeEntities: true })
 
-  const attrsToArray = token => {
+  const attrsToArray = (token) => {
     if (!token.attrs) return []
     return token.attrs.reduce((v, a) => v.concat(a), [])
   }
