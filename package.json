@@ -31,6 +31,10 @@
     "test:coverage": "cross-env NODE_ENV=test nyc mocha"
   },
   "license": "MIT",
+  "files": [
+    "lib",
+    "dist"
+  ],
   "devDependencies": {
     "babel-cli": "^6.23.0",
     "babel-core": "^6.23.1",
