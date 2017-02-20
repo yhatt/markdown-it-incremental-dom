@@ -3,6 +3,7 @@
   "plugins": ["add-module-exports"],
   "env": {
     "test": {
+      "presets": ["babel-preset-power-assert"],
       "plugins": ["istanbul"]
     }
   }
