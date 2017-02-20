@@ -27,8 +27,8 @@
     "clean:dist": "rimraf dist",
     "lint": "eslint --cache .",
     "lint:nocache": "eslint .",
-    "prepublish": "in-publish && yarn run prepublish:inpublish || true",
-    "prepublish:inpublish": "cross-env NPM_EXECPATH='yarn run' npm-run-all --parallel lint:nocache test --sequential clean build",
+    "prepublish": "in-publish && yarn run prepublishOnly || true",
+    "prepublishOnly": "cross-env NPM_EXECPATH='yarn run' npm-run-all --parallel lint:nocache test --sequential clean build",
     "test": "cross-env NODE_ENV=test mocha",
     "test:coverage": "cross-env NODE_ENV=test nyc mocha"
   },
