@@ -1,4 +1,4 @@
-:warning: **WARNING!** This plugin is under development and not released.
+:warning: **WARNING!** This plugin is under development.
 
 ---
 
