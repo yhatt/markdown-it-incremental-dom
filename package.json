@@ -21,7 +21,7 @@
   "scripts": {
     "build": "cross-env NPM_EXECPATH='yarn run' npm-run-all --parallel build:*",
     "build:commonjs": "yarn run clean:lib && babel src --out-dir lib",
-    "build:browser": "yarn run clean:dist && webpack",
+    "build:browser": "yarn run clean:dist && webpack -p",
     "clean": "cross-env NPM_EXECPATH='yarn run' npm-run-all --parallel clean:*",
     "clean:lib": "rimraf lib",
     "clean:dist": "rimraf dist",

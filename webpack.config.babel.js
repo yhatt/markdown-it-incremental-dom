@@ -11,9 +11,6 @@ export default {
     libraryTarget: 'umd',
     umdNamedDefine: true,
   },
-  plugins: [
-    new webpack.optimize.UglifyJsPlugin(),
-  ],
   module: {
     rules: [
       {
