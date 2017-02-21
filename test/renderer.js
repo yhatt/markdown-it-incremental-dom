@@ -107,7 +107,7 @@ describe('Renderer', () => {
       const markdown = 'Footnote[^1]\n\n[^1]: test'
 
       it('renders footnote correctly', () => {
-        const rendered = instance.idom(markdown)
+        instance.idom(markdown)
 
         assert(document.querySelector('sup.footnote-ref > a#fnref1[href="#fn1"]'))
         assert(document.querySelector('hr.footnotes-sep'))
