@@ -27,7 +27,7 @@ export default function (incrementalDom) {
 
   return {
     renderInline(tokens, options, env) {
-      return ({ preventEndHTMLParser } = { preventEndHTMLParser: false }) => {
+      return () => {
         tokens.forEach((current, i) => {
           const { type } = current
 
@@ -37,10 +37,6 @@ export default function (incrementalDom) {
             this.renderToken(tokens, i, options)()
           }
         })
-        if (!preventEndHTMLParser) {
-          iDOMParser.end()
-          iDOMParser.reset()
-        }
       }
     },
 
@@ -65,7 +61,7 @@ export default function (incrementalDom) {
           const { type } = current
 
           if (type === 'inline') {
-            this.renderInline(current.children, options, env)({ preventEndHTMLParser: true })
+            this.renderInline(current.children, options, env)()
           } else if (typeof this.rules[type] !== 'undefined') {
             wrapIncrementalDOM(this.rules[type](tokens, i, options, env, this))
           } else {
