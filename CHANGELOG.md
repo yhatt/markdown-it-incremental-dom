@@ -1,5 +1,5 @@
 # Change Log
 
-## [Unreleased / Test releases] (v0.0.x)
+## v0.1.0 - 2017-02-22
 
-- Initial release. It will become to v0.1.0.
+- Initial release.
