@@ -1,7 +1,3 @@
-:warning: **WARNING!** This plugin is under development.
-
----
-
 # markdown-it-incremental-dom
 
 [![Build Status](https://travis-ci.org/yhatt/markdown-it-incremental-dom.svg?branch=master)](https://travis-ci.org/yhatt/markdown-it-incremental-dom)
