@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>markdown-it-incremental-dom</title>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/superagent/3.5.0/superagent.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/markdown-it/8.3.0/markdown-it.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/incrementaldom/0.5.1/incremental-dom-min.js"></script>
+  <script src="https://unpkg.com/markdown-it-incremental-dom/dist/markdown-it-incremental-dom.js"></script>
+  <script src="./index.js"></script>
+
+  <link rel="stylesheet" href="./index.css" />
+  <link rel="stylesheet" href="https://unpkg.com/github-markdown-css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <ul class="nav">
+        <li><a href="https://github.com/yhatt/markdown-it-incremental-dom" target="_blank">Github</a></li>
+        <li><a href="https://www.npmjs.com/package/markdown-it-incremental-dom" target="_blank">npm</a></li>
+      </ul>
+      <h1>markdown-it-incremental-dom</h1>
+    </header>
+    <div class="options">
+      Render Markdown with:
+      <label>
+        <input type="radio" class="markdown-options" name="markdown-options" value="incrementalDOM" checked />
+        Incremental DOM
+      </label>
+      <label>
+        <input type="radio" class="markdown-options" name="markdown-options" value="innerHTML" />
+        innerHTML
+      </label>
+    </div>
+
+    <div class="text-container">
+      <div class="text-wrapper">
+        <textarea id="text" autocomplete="off" placeholder="Loading..." autofocus></textarea>
+      </div>
+    </div>
+    <div class="markdown-container">
+      <div id="target" class="markdown-body"></div>
+    </div>
+  </div>
+</body>
+</html>
