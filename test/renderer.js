@@ -51,17 +51,17 @@ describe('Renderer', () => {
 
   context('with code block rendering (overrided rule)', () => {
     it('renders code block correctly', () => {
-      md().idom('    alert("test")\n\talert("code block")')
+      md().idom('    <script>\n    alert("test")\n\t</script>')
 
       const code = document.querySelector('pre > code')
-      assert(code.innerHTML === 'alert("test")\nalert("code block")')
+      assert(code.innerHTML === '&lt;script&gt;\nalert("test")\n&lt;/script&gt;')
     })
   })
 
   context('with inline code rendering (overrided rule)', () => {
     it('renders <code> correctly', () => {
-      const rendered = md().iidom('This is `Inline` rendering')
-      assert(rendered === 'This is <code>Inline</code> rendering')
+      const rendered = md().iidom('This is `<b>Inline</b>` rendering')
+      assert(rendered === 'This is <code>&lt;b&gt;Inline&lt;/b&gt;</code> rendering')
     })
   })
 
@@ -73,12 +73,12 @@ describe('Renderer', () => {
   })
 
   context('with html option', () => {
-    const markdown = '<b>test</b>'
+    const markdown = '<b class="test">test</b>'
 
     context('with false', () => {
       it('sanitizes HTML tag', () => {
         const rendered = md({ html: false }).idom(markdown)
-        assert(rendered === '<p>&lt;b&gt;test&lt;/b&gt;</p>')
+        assert(rendered === '<p>&lt;b class="test"&gt;test&lt;/b&gt;</p>')
       })
     })
 
