@@ -119,4 +119,4 @@ Yuki Hattori ([@yhatt](https://github.com/yhatt/))
 
 ## License
 
-This plugin releases under the [MIT License](https://github.com/yhatt/marp/blob/master/LICENSE).
+This plugin releases under the [MIT License](https://github.com/yhatt/markdown-it-incremental-dom/blob/master/LICENSE).
