@@ -36,7 +36,7 @@ describe('Renderer', () => {
     })
   })
 
-  context('with rendering code block (requires parsing HTML)', () => {
+  context('with rendering fence (requires parsing HTML)', () => {
     it('renders parsed HTML correctly', () => {
       md().idom('```javascript\nalert("test")\n```')
 
@@ -49,10 +49,26 @@ describe('Renderer', () => {
     })
   })
 
-  context('with inline rendering', () => {
-    it('renders correctly', () => {
-      const rendered = md().iidom('**Inline** rendering')
-      assert(rendered === '<strong>Inline</strong> rendering')
+  context('with code block rendering (overrided rule)', () => {
+    it('renders code block correctly', () => {
+      md().idom('    alert("test")\n\talert("code block")')
+
+      const code = document.querySelector('pre > code')
+      assert(code.innerHTML === 'alert("test")\nalert("code block")')
+    })
+  })
+
+  context('with inline code rendering (overrided rule)', () => {
+    it('renders <code> correctly', () => {
+      const rendered = md().iidom('This is `Inline` rendering')
+      assert(rendered === 'This is <code>Inline</code> rendering')
+    })
+  })
+
+  context('with rendering hardbreak (overrided rule)', () => {
+    it('renders <br> correctly', () => {
+      const rendered = md().iidom('hardbreak  \ntest')
+      assert(rendered === 'hardbreak<br>test')
     })
   })
 
