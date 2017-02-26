@@ -1,4 +1,5 @@
 dist/
+docs/
 lib/
 coverage/
 node_modules

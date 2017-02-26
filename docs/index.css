@@ -1,0 +1,112 @@
+@charset "UTF-8";
+
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+header {
+  background: #666;
+  color: #fff;
+  height: 70px;
+  line-height: 70px;
+  padding: 0 .5em;
+}
+
+header a {
+  color: #fff;
+}
+
+h1 {
+  margin: 0;
+}
+
+.nav {
+  display: block;
+  float: right;
+  margin: 0;
+  padding: 0;
+}
+
+.nav > li {
+  display: inline;
+}
+
+.nav > li > a {
+  display: inline-block;
+  padding: 0 1em;
+}
+
+.container {
+  height: 100%;
+  position: relative;
+}
+
+.options {
+  background: #ddd;
+  color: #333;
+
+  position: absolute;
+  left: 0;
+  top: 70px;
+  right: 0;
+
+  height: 30px;
+  line-height: 30px;
+  padding: 0 .5em;
+}
+
+.text-container {
+  background: #f8f8f8;
+
+  position: absolute;
+  left: 0;
+  top: 100px;
+  right: 50%;
+  bottom: 0;
+}
+
+.text-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 20px;
+}
+
+.markdown-container {
+  position: absolute;
+  left: 50%;
+  top: 100px;
+  right: 0;
+  bottom: 0;
+
+  overflow: auto;
+}
+
+#target {
+  margin: 20px;
+}
+
+#text {
+  background: transparent;
+  border: 0;
+  outline: 0;
+  display: block;
+  font-size: 16px;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  resize: none;
+  width: 100%;
+}

@@ -4,6 +4,10 @@
 
 A [markdown-it](https://github.com/markdown-it/markdown-it) renderer plugin by using [Incremental DOM](https://github.com/google/incremental-dom).
 
+Let's see key features: **[https://yhatt.github.io/markdown-it-incremental-dom/](https://yhatt.github.io/markdown-it-incremental-dom/)** or [`docs.md`](docs/docs.md)
+
+[![](./docs/images/repainting-incremental-dom.gif)](https://yhatt.github.io/markdown-it-incremental-dom/)
+
 ## Requirement
 
 - [markdown-it](https://github.com/markdown-it/markdown-it) >= 4.0.0 (Recommend latest version >= 8.2.2, that this plugin use it)
