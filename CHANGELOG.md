@@ -4,6 +4,7 @@
 ### Added
 
 - Demo page with explaining of key features  (https://yhatt.github.io/markdown-it-incremental-dom/)
+- Add badges: Coverage (powered by Coveralls), npm version, and LICENSE.
 
 ## v0.1.0 - 2017-02-22
 
