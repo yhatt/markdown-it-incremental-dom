@@ -1,6 +1,8 @@
 # markdown-it-incremental-dom
 
-[![Build Status](https://travis-ci.org/yhatt/markdown-it-incremental-dom.svg?branch=master)](https://travis-ci.org/yhatt/markdown-it-incremental-dom)
+[![Travis](https://img.shields.io/travis/yhatt/markdown-it-incremental-dom.svg?style=flat-square)](https://travis-ci.org/yhatt/markdown-it-incremental-dom)
+[![npm](https://img.shields.io/npm/v/markdown-it-incremental-dom.svg?style=flat-square)](https://www.npmjs.com/package/markdown-it-incremental-dom)
+[![LICENSE](https://img.shields.io/github/license/yhatt/markdown-it-incremental-dom.svg?style=flat-square)](./LICENSE)
 
 A [markdown-it](https://github.com/markdown-it/markdown-it) renderer plugin by using [Incremental DOM](https://github.com/google/incremental-dom).
 
