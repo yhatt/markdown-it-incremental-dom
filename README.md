@@ -1,6 +1,7 @@
 # markdown-it-incremental-dom
 
-[![Travis](https://img.shields.io/travis/yhatt/markdown-it-incremental-dom.svg?style=flat-square)](https://travis-ci.org/yhatt/markdown-it-incremental-dom)
+[![Travis CI](https://img.shields.io/travis/yhatt/markdown-it-incremental-dom.svg?style=flat-square)](https://travis-ci.org/yhatt/markdown-it-incremental-dom)
+[![Coveralls](https://img.shields.io/coveralls/yhatt/markdown-it-incremental-dom/master.svg?style=flat-square)](https://coveralls.io/github/yhatt/markdown-it-incremental-dom?branch=master)
 [![npm](https://img.shields.io/npm/v/markdown-it-incremental-dom.svg?style=flat-square)](https://www.npmjs.com/package/markdown-it-incremental-dom)
 [![LICENSE](https://img.shields.io/github/license/yhatt/markdown-it-incremental-dom.svg?style=flat-square)](./LICENSE)
 
