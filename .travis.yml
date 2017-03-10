@@ -6,3 +6,5 @@ sudo: false
 script:
   - "yarn lint:nocache"
   - "yarn test:coverage"
+
+after_success: yarn coveralls
