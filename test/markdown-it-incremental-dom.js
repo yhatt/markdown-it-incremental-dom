@@ -34,7 +34,10 @@ describe('markdown-it-incremental-dom', () => {
 
         context('when it is false', () => {
           it('parses HTML string by htmlparser2', () => {
-            const func = md({ incrementalizeDefaultRules: false }).renderInlineToIncrementalDOM(mdString)
+            const func = md({
+              incrementalizeDefaultRules: false,
+            })
+            .renderInlineToIncrementalDOM(mdString)
 
             IncrementalDOM.patch(document.body, func)
             assert(spy.calledWith(expectedHTML))
@@ -43,7 +46,10 @@ describe('markdown-it-incremental-dom', () => {
 
         context('when it is true', () => {
           it('does not parse HTML string in overridden rule', () => {
-            const func = md({ incrementalizeDefaultRules: true }).renderInlineToIncrementalDOM(mdString)
+            const func = md({
+              incrementalizeDefaultRules: true,
+            })
+            .renderInlineToIncrementalDOM(mdString)
 
             IncrementalDOM.patch(document.body, func)
             assert(!spy.calledWith(expectedHTML))
