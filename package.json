@@ -62,6 +62,7 @@
     "nyc": "^10.1.2",
     "power-assert": "^1.4.2",
     "rimraf": "^2.6.1",
+    "sinon": "^1.17.7",
     "webpack": "^2.2.1"
   },
   "peerDependencies": {
