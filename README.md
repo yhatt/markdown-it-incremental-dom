@@ -83,9 +83,26 @@ const md = require('markdown-it')()
              .use(require('markdown-it-incremental-dom'), IncrementalDOM)
 ```
 
-If it is succeed, 2 new rendering methods would be injected to instance.
+If it is succeed, [2 new rendering methods](#rendering-methods) would be injected to instance.
 
-### `MarkdownIt.renderToIncrementalDOM(src[, env]) => Function`
+> ***TIPS:*** This plugin keeps default rendering methods [`render()`](https://markdown-it.github.io/markdown-it/#MarkdownIt.render) and [`renderInline()`](https://markdown-it.github.io/markdown-it/#MarkdownIt.renderInline).
+
+### Option
+
+You can pass option object as third argument. See below:
+
+```javascript
+require('markdown-it')()
+  .use(require('markdown-it-incremental-dom'), IncrementalDOM, {
+    incrementalizeDefaultRules: true
+  })
+```
+
+- **`incrementalizeDefaultRules`**: For better performance, this plugin would override a few default renderer rules only when you calls injected methods. If the other plugins that override default rules have occured any problem, You can disable overriding by setting `false`. *(`true` by default)*
+
+### Rendering methods
+
+#### `MarkdownIt.renderToIncrementalDOM(src[, env]) => Function`
 
 Similar to [`MarkdownIt.render(src[, env])`](https://markdown-it.github.io/markdown-it/#MarkdownIt.render) but *it returns a function for Incremental DOM*. It means doesn't render Markdown immediately.
 
@@ -99,7 +116,7 @@ const func = md.renderToIncrementalDOM('# Hello, Incremental DOM!')
 IncrementalDOM.patch(node, func)
 ```
 
-### `MarkdownIt.renderInlineToIncrementalDOM(src[, env]) => Function`
+#### `MarkdownIt.renderInlineToIncrementalDOM(src[, env]) => Function`
 
 Similar to `MarkdownIt.renderToIncrementalDOM` but it wraps [`MarkdownIt.renderInline(src[, env])`](https://markdown-it.github.io/markdown-it/#MarkdownIt.renderInline).
 
