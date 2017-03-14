@@ -16,7 +16,8 @@ export default function (md, target, opts = {}) {
     const renderer = mixinTo(this.renderer, mixin)
 
     if (options.incrementalizeDefaultRules) {
-      Object.assign(renderer.rules, incrementalizedRules(incrementalDOM))
+      const overridedRules = Object.assign({}, renderer.rules, incrementalizedRules(incrementalDOM))
+      renderer.rules = overridedRules
     }
 
     return renderer.render(this[method](src, env), this.options, env)
