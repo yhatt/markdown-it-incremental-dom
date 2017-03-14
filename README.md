@@ -13,7 +13,7 @@ Let's see key features: **[https://yhatt.github.io/markdown-it-incremental-dom/]
 
 ## Requirement
 
-- [markdown-it](https://github.com/markdown-it/markdown-it) >= 4.0.0 (Recommend latest version >= 8.2.2, that this plugin use it)
+- [markdown-it](https://github.com/markdown-it/markdown-it) >= 4.0.0 (Recommend latest version >= 8.3.1, that this plugin use it)
 - [Incremental DOM](https://github.com/google/incremental-dom) >= 0.5.x
 
 ## Examples
@@ -41,7 +41,7 @@ Define as `window.markdownitIncrementalDOM`.
 <html>
 <head>
   <script src="https://ajax.googleapis.com/ajax/libs/incrementaldom/0.5.1/incremental-dom.js"></script>
-  <script src="https://cdn.jsdelivr.net/markdown-it/8.2.2/markdown-it.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/markdown-it/8.3.1/markdown-it.min.js"></script>
   <script src="./node_modules/markdown-it-incremental-dom/dist/markdown-it-incremental-dom.js"></script>
 </head>
 <body>
