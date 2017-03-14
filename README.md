@@ -40,9 +40,9 @@ Define as `window.markdownitIncrementalDOM`.
 <!DOCTYPE HTML>
 <html>
 <head>
-  <script src="https://ajax.googleapis.com/ajax/libs/incrementaldom/0.5.1/incremental-dom.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/incrementaldom/0.5.1/incremental-dom-min.js"></script>
   <script src="https://cdn.jsdelivr.net/markdown-it/8.3.1/markdown-it.min.js"></script>
-  <script src="./node_modules/markdown-it-incremental-dom/dist/markdown-it-incremental-dom.js"></script>
+  <script src="./node_modules/markdown-it-incremental-dom/dist/markdown-it-incremental-dom.min.js"></script>
 </head>
 <body>
   <div id="target"></div>
@@ -58,6 +58,13 @@ Define as `window.markdownitIncrementalDOM`.
 </body>
 </html>
 ```
+
+#### CDN
+
+You can use the recent version through CDN provides by [unpkg.com](https://unpkg.com/).
+
+- **[Compressed (Recommend)](https://unpkg.com/markdown-it-incremental-dom/dist/markdown-it-incremental-dom.min.js)**
+- [Uncompressed](https://unpkg.com/markdown-it-incremental-dom/dist/markdown-it-incremental-dom.js)
 
 ## Installation
 
