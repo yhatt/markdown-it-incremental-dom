@@ -19,13 +19,14 @@ export default function (incrementalDom) {
     onclosetag: elementClose,
   }, { decodeEntities: true })
 
-  const attrsToArray = (token) => {
-    if (!token.attrs) return []
-    return token.attrs.reduce((v, a) => v.concat(a), [])
-  }
   const wrapIncrementalDOM = html => ((typeof html === 'function') ? html() : iDOMParser.write(html))
 
   return {
+    renderAttrsToArray(token) {
+      if (!token.attrs) return []
+      return token.attrs.reduce((v, a) => v.concat(a), [])
+    },
+
     renderInline(tokens, options, env) {
       return () => {
         tokens.forEach((current, i) => {
@@ -46,11 +47,11 @@ export default function (incrementalDom) {
         if (token.hidden) return
 
         if (token.nesting === 0) {
-          elementVoid(token.tag, '', [], ...attrsToArray(token))
+          elementVoid(token.tag, '', [], ...this.renderAttrsToArray(token))
         } else if (token.nesting === -1) {
           elementClose(token.tag)
         } else {
-          elementOpen(token.tag, '', [], ...attrsToArray(token))
+          elementOpen(token.tag, '', [], ...this.renderAttrsToArray(token))
         }
       }
     },
