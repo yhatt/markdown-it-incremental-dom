@@ -1,6 +1,13 @@
 Change Log
 ===
 
+[Unreleased]
+---
+
+### Fixed
+
+- Fix double executing pre-publish script in `npm publish` executed by `^npm@4.0.0` ([#11](https://github.com/yhatt/markdown-it-incremental-dom/pull/11))
+
 v1.0.0 - 2017-03-14
 ---
 
