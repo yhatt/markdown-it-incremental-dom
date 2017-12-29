@@ -28,6 +28,7 @@ export default {
   },
   plugins: [
     new webpack.BannerPlugin(banner),
+    new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.optimize.UglifyJsPlugin({ include: /\.min\.js($|\?)/i }),
   ],
   module: {
