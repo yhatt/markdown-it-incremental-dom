@@ -1,14 +1,19 @@
-import { jsdom } from 'jsdom'
+import { JSDOM } from 'jsdom'
 
-global.document = jsdom('')
-global.window = document.defaultView
+const { window } = new JSDOM('<!doctype html><html><body></body></html>')
 
-Object.keys(global.window)
-  .concat(['Document', 'Element'])
-  .forEach((prop) => {
-    if (typeof global[prop] === 'undefined') {
-      global[prop] = global.window[prop]
-    }
-  })
+function copyProps(src, target) {
+  const props = Object.getOwnPropertyNames(src)
+    .filter(prop => typeof target[prop] === 'undefined')
+    .map(prop => Object.getOwnPropertyDescriptor(src, prop))
 
+  Object.defineProperties(target, props)
+}
+
+global.window = window
+global.document = window.document
+global.Document = window.Document
+global.Element = window.Element
 global.navigator = { userAgent: 'node.js' }
+
+copyProps(window, global)
