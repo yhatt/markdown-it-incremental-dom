@@ -37,7 +37,7 @@ describe('markdown-it-incremental-dom', () => {
             const func = md({
               incrementalizeDefaultRules: false,
             })
-            .renderInlineToIncrementalDOM(mdString)
+              .renderInlineToIncrementalDOM(mdString)
 
             IncrementalDOM.patch(document.body, func)
             assert(spy.calledWith(expectedHTML))
@@ -49,7 +49,7 @@ describe('markdown-it-incremental-dom', () => {
             const func = md({
               incrementalizeDefaultRules: true,
             })
-            .renderInlineToIncrementalDOM(mdString)
+              .renderInlineToIncrementalDOM(mdString)
 
             IncrementalDOM.patch(document.body, func)
             assert(!spy.calledWith(expectedHTML))
