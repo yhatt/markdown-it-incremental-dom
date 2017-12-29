@@ -6,7 +6,7 @@ Change Log
 
 ### Changed
 
-- Upgrade dependencies to latest version
+- Upgrade dependencies to latest version ([#12](https://github.com/yhatt/markdown-it-incremental-dom/pull/12))
 
 ### Fixed
 
