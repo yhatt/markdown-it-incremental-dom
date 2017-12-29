@@ -1,6 +1,13 @@
 Change Log
 ===
 
+Unreleased
+---
+
+### Changed
+
+- Upgrade dependencies to latest version
+
 v1.0.0 - 2017-03-14
 ---
 
