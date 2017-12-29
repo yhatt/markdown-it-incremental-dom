@@ -4,6 +4,10 @@ Change Log
 [Unreleased]
 ---
 
+### Changed
+
+- Upgrade dependencies to latest version ([#12](https://github.com/yhatt/markdown-it-incremental-dom/pull/12))
+
 ### Fixed
 
 - Fix double executing pre-publish script in `npm publish` executed by `^npm@4.0.0` ([#11](https://github.com/yhatt/markdown-it-incremental-dom/pull/11))
