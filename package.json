@@ -5,7 +5,7 @@
   "main": "lib/markdown-it-incremental-dom.js",
   "browser": "dist/markdown-it-incremental-dom.js",
   "engines": {
-    "node": ">=4.2"
+    "node": ">=4.2.0"
   },
   "author": {
     "name": "Yuki Hattori",
@@ -31,8 +31,7 @@
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "lint": "eslint --cache .",
     "lint:nocache": "eslint .",
-    "prepublish": "! in-publish && exit 0 || yarn run prepare:publish",
-    "prepare:publish": "cross-env NPM_EXECPATH='yarn run' npm-run-all --parallel lint:nocache test:coverage --sequential build",
+    "prepack": "cross-env NPM_EXECPATH='yarn run' npm-run-all --parallel lint:nocache test:coverage --sequential build",
     "test": "cross-env NODE_ENV=test mocha",
     "test:coverage": "cross-env NODE_ENV=test nyc mocha"
   },
@@ -56,7 +55,6 @@
     "eslint": "^4.14.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0",
-    "in-publish": "^2.0.0",
     "incremental-dom": "^0.5.1",
     "jsdom": "^11.5.1",
     "markdown-it": "^8.4.0",
