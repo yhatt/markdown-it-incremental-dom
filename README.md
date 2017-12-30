@@ -143,6 +143,16 @@ $ yarn install
 $ yarn build
 ```
 
+### Lint & Format
+
+```bash
+$ yarn lint            # Run ESLint and Prettier to JS
+$ yarn lint --fix      # Fix lint and formatting of JS
+
+$ yarn format          # Run Prettier to Markdown, JSON and CSS
+$ yarn format --write  # Fix code formatting by Prettier
+```
+
 ### Publish to npm
 
 ```bash
