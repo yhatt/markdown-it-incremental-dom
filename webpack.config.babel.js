@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import path from 'path'
 import webpack from 'webpack'
 import packageConfig from './package.json'
@@ -39,13 +38,13 @@ export default {
         loader: 'babel-loader',
         options: {
           presets: [[
-            "env", {
-              "modules": false,
-              "targets": {
-                "browsers": ['> 1%', 'last 2 versions', 'Firefox ESR', 'ie >= 9']
+            'env', {
+              modules: false,
+              targets: {
+                browsers: ['> 1%', 'last 2 versions', 'Firefox ESR', 'ie >= 9'],
               },
-              "useBuiltIns": true
-            }
+              useBuiltIns: true,
+            },
           ]],
         },
       },

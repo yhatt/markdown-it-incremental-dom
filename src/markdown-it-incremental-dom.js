@@ -5,7 +5,7 @@ const mixinTo = (base, mixin) =>
   Object.assign(Object.create(Object.getPrototypeOf(base)), base, mixin)
 
 const processIncrementalDOMArgument = incrementalDOM =>
-  (!incrementalDOM && typeof window !== 'undefined') ? window.IncrementalDOM : incrementalDOM
+  ((!incrementalDOM && typeof window !== 'undefined') ? window.IncrementalDOM : incrementalDOM)
 
 export default function (md, target, opts = {}) {
   const options = { incrementalizeDefaultRules: true, ...opts }
