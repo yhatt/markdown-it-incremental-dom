@@ -4,6 +4,9 @@
   "description": "markdown-it renderer plugin by using Incremental DOM.",
   "main": "lib/markdown-it-incremental-dom.js",
   "browser": "dist/markdown-it-incremental-dom.js",
+  "engines": {
+    "node": ">=4.2"
+  },
   "author": {
     "name": "Yuki Hattori",
     "url": "https://github.com/yhatt"
@@ -44,7 +47,9 @@
     "babel-loader": "^7.1.2",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-istanbul": "^4.1.5",
-    "babel-preset-es2015": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
     "babel-preset-power-assert": "^1.0.0",
     "coveralls": "^3.0.0",
     "cross-env": "^5.1.3",

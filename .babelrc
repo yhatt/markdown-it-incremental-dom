@@ -1,6 +1,16 @@
 {
-  "presets": ["es2015"],
-  "plugins": ["add-module-exports"],
+  "presets": [[
+    "env", {
+      "targets": {
+        "node": "4.2"
+      },
+      "useBuiltIns": true
+    }
+  ]],
+  "plugins": [
+    ["transform-object-rest-spread", { "useBuiltIns": true }],
+    "add-module-exports"
+  ],
   "env": {
     "test": {
       "presets": ["babel-preset-power-assert"],
