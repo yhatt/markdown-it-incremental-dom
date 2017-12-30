@@ -3,10 +3,14 @@
     "env", {
       "targets": {
         "node": "4.2"
-      }
+      },
+      "useBuiltIns": true
     }
   ]],
-  "plugins": ["add-module-exports"],
+  "plugins": [
+    ["transform-object-rest-spread", { "useBuiltIns": true }],
+    "add-module-exports"
+  ],
   "env": {
     "test": {
       "presets": ["babel-preset-power-assert"],
