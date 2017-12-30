@@ -13,8 +13,8 @@ Let's see key features: **[https://yhatt.github.io/markdown-it-incremental-dom/]
 
 ## Requirement
 
-- [markdown-it](https://github.com/markdown-it/markdown-it) >= 4.0.0 (Recommend latest version >= 8.4.0, that this plugin use it)
-- [Incremental DOM](https://github.com/google/incremental-dom) >= 0.5.x
+* [markdown-it](https://github.com/markdown-it/markdown-it) >= 4.0.0 (Recommend latest version >= 8.4.0, that this plugin use it)
+* [Incremental DOM](https://github.com/google/incremental-dom) >= 0.5.x
 
 ## Examples
 
@@ -23,8 +23,10 @@ Let's see key features: **[https://yhatt.github.io/markdown-it-incremental-dom/]
 ```javascript
 const IncrementalDOM = require('incremental-dom')
 
-const md = require('markdown-it')()
-             .use(require('markdown-it-incremental-dom'), IncrementalDOM)
+const md = require('markdown-it')().use(
+  require('markdown-it-incremental-dom'),
+  IncrementalDOM
+)
 
 IncrementalDOM.patch(
   document.getElementById('target'),
@@ -63,8 +65,8 @@ Define as `window.markdownitIncrementalDOM`.
 
 You can use the recent version through CDN provides by [unpkg.com](https://unpkg.com/).
 
-- **[Compressed (Recommend)](https://unpkg.com/markdown-it-incremental-dom/dist/markdown-it-incremental-dom.min.js)**
-- [Uncompressed](https://unpkg.com/markdown-it-incremental-dom/dist/markdown-it-incremental-dom.js)
+* **[Compressed (Recommend)](https://unpkg.com/markdown-it-incremental-dom/dist/markdown-it-incremental-dom.min.js)**
+* [Uncompressed](https://unpkg.com/markdown-it-incremental-dom/dist/markdown-it-incremental-dom.js)
 
 ## Installation
 
@@ -82,36 +84,41 @@ $ npm install markdown-it-incremental-dom --save
 
 ## Usage
 
-When injecting this plugin by `.use()`, *you should pass Incremental DOM class as second argument.* (`window.IncrementalDOM` by default)
+When injecting this plugin by `.use()`, _you should pass Incremental DOM class as second argument._ (`window.IncrementalDOM` by default)
 
 ```javascript
 const IncrementalDOM = require('incremental-dom')
-const md = require('markdown-it')()
-             .use(require('markdown-it-incremental-dom'), IncrementalDOM)
+const md = require('markdown-it')().use(
+  require('markdown-it-incremental-dom'),
+  IncrementalDOM
+)
 ```
 
 If it is succeed, [2 new rendering methods](#rendering-methods) would be injected to instance.
 
-> ***TIPS:*** This plugin keeps default rendering methods [`render()`](https://markdown-it.github.io/markdown-it/#MarkdownIt.render) and [`renderInline()`](https://markdown-it.github.io/markdown-it/#MarkdownIt.renderInline).
+> **_TIPS:_** This plugin keeps default rendering methods [`render()`](https://markdown-it.github.io/markdown-it/#MarkdownIt.render) and [`renderInline()`](https://markdown-it.github.io/markdown-it/#MarkdownIt.renderInline).
 
 ### Option
 
 You can pass option object as third argument. See below:
 
 ```javascript
-require('markdown-it')()
-  .use(require('markdown-it-incremental-dom'), IncrementalDOM, {
-    incrementalizeDefaultRules: true
-  })
+require('markdown-it')().use(
+  require('markdown-it-incremental-dom'),
+  IncrementalDOM,
+  {
+    incrementalizeDefaultRules: true,
+  }
+)
 ```
 
-- **`incrementalizeDefaultRules`**: For better performance, this plugin would override a few default renderer rules only when you calls injected methods. If the other plugins that override default rules have occured any problem, You can disable overriding by setting `false`. *(`true` by default)*
+* **`incrementalizeDefaultRules`**: For better performance, this plugin would override a few default renderer rules only when you calls injected methods. If the other plugins that override default rules have occured any problem, You can disable overriding by setting `false`. _(`true` by default)_
 
 ### Rendering methods
 
 #### `MarkdownIt.renderToIncrementalDOM(src[, env]) => Function`
 
-Similar to [`MarkdownIt.render(src[, env])`](https://markdown-it.github.io/markdown-it/#MarkdownIt.render) but *it returns a function for Incremental DOM*. It means doesn't render Markdown immediately.
+Similar to [`MarkdownIt.render(src[, env])`](https://markdown-it.github.io/markdown-it/#MarkdownIt.render) but _it returns a function for Incremental DOM_. It means doesn't render Markdown immediately.
 
 You must render to DOM by using [`IncrementalDOM.patch(node, description)`](http://google.github.io/incremental-dom/#api/patch). Please pass the returned function to the description argument. For example:
 
