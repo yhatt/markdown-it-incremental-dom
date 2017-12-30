@@ -1,3 +1,8 @@
+env:
+  browser: true
+  node: false
+  es6: false
+
 rules:
-  no-var: 0
-  prefer-arrow-callback: 0
+  no-var: off
+  prefer-arrow-callback: off
