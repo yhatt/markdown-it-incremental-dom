@@ -37,15 +37,23 @@ export default {
         exclude: /node_modules/,
         loader: 'babel-loader',
         options: {
-          presets: [[
-            'env', {
-              modules: false,
-              targets: {
-                browsers: ['> 1%', 'last 2 versions', 'Firefox ESR', 'ie >= 9'],
+          presets: [
+            [
+              'env',
+              {
+                modules: false,
+                targets: {
+                  browsers: [
+                    '> 1%',
+                    'last 2 versions',
+                    'Firefox ESR',
+                    'ie >= 9',
+                  ],
+                },
+                useBuiltIns: true,
               },
-              useBuiltIns: true,
-            },
-          ]],
+            ],
+          ],
         },
       },
     ],

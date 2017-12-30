@@ -1,7 +1,5 @@
-export default function (incrementalDom) {
-  const {
-    elementClose, elementOpen, elementVoid, text,
-  } = incrementalDom
+export default function(incrementalDom) {
+  const { elementClose, elementOpen, elementVoid, text } = incrementalDom
 
   return {
     code_inline(tokens, idx, options, env, slf) {

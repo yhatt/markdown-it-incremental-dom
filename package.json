@@ -29,10 +29,9 @@
     "clean:lib": "rimraf lib",
     "clean:dist": "rimraf dist",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
-    "lint": "eslint --cache .",
-    "lint:nocache": "eslint .",
+    "lint": "eslint .",
     "prepublish": "! in-publish && exit 0 || yarn run prepare:publish",
-    "prepare:publish": "cross-env NPM_EXECPATH='yarn run' npm-run-all --parallel lint:nocache test:coverage --sequential build",
+    "prepare:publish": "cross-env NPM_EXECPATH='yarn run' npm-run-all --parallel lint test:coverage --sequential build",
     "test": "cross-env NODE_ENV=test mocha",
     "test:coverage": "cross-env NODE_ENV=test nyc mocha"
   },

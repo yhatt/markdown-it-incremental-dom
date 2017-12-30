@@ -7,17 +7,26 @@ import MarkdownItIncrementalDOM from '../src/markdown-it-incremental-dom'
 
 describe('Renderer', () => {
   const md = (opts = {}) => {
-    const instance = MarkdownIt(opts).use(MarkdownItIncrementalDOM, IncrementalDOM)
+    const instance = MarkdownIt(opts).use(
+      MarkdownItIncrementalDOM,
+      IncrementalDOM
+    )
 
     // returns rendered string by .renderToIncrementalDOM
     instance.idom = (...args) => {
-      IncrementalDOM.patch(document.body, instance.renderToIncrementalDOM(...args))
+      IncrementalDOM.patch(
+        document.body,
+        instance.renderToIncrementalDOM(...args)
+      )
       return document.body.innerHTML
     }
 
     // returns rendered string by .renderInlineToIncrementalDOM
     instance.iidom = (...args) => {
-      IncrementalDOM.patch(document.body, instance.renderInlineToIncrementalDOM(...args))
+      IncrementalDOM.patch(
+        document.body,
+        instance.renderInlineToIncrementalDOM(...args)
+      )
       return document.body.innerHTML
     }
 
@@ -54,14 +63,18 @@ describe('Renderer', () => {
       md().idom('    <script>\n    alert("test")\n\t</script>')
 
       const code = document.querySelector('pre > code')
-      assert(code.innerHTML === '&lt;script&gt;\nalert("test")\n&lt;/script&gt;')
+      assert(
+        code.innerHTML === '&lt;script&gt;\nalert("test")\n&lt;/script&gt;'
+      )
     })
   })
 
   context('with inline code rendering (overrided rule)', () => {
     it('renders <code> correctly', () => {
       const rendered = md().iidom('This is `<b>Inline</b>` rendering')
-      assert(rendered === 'This is <code>&lt;b&gt;Inline&lt;/b&gt;</code> rendering')
+      assert(
+        rendered === 'This is <code>&lt;b&gt;Inline&lt;/b&gt;</code> rendering'
+      )
     })
   })
 
@@ -118,18 +131,29 @@ describe('Renderer', () => {
       })
     })
 
-    context('when markdown-it-footnote is injected (overriding renderer rules)', () => {
-      const instance = md().use(MarkdownItFootnote)
-      const markdown = 'Footnote[^1]\n\n[^1]: test'
+    context(
+      'when markdown-it-footnote is injected (overriding renderer rules)',
+      () => {
+        const instance = md().use(MarkdownItFootnote)
+        const markdown = 'Footnote[^1]\n\n[^1]: test'
 
-      it('renders footnote correctly', () => {
-        instance.idom(markdown)
+        it('renders footnote correctly', () => {
+          instance.idom(markdown)
 
-        assert(document.querySelector('sup.footnote-ref > a#fnref1[href="#fn1"]'))
-        assert(document.querySelector('hr.footnotes-sep'))
-        assert(document.querySelector('section.footnotes > ol.footnotes-list > li#fn1.footnote-item'))
-        assert(document.querySelector('#fn1 a.footnote-backref[href="#fnref1"]'))
-      })
-    })
+          assert(
+            document.querySelector('sup.footnote-ref > a#fnref1[href="#fn1"]')
+          )
+          assert(document.querySelector('hr.footnotes-sep'))
+          assert(
+            document.querySelector(
+              'section.footnotes > ol.footnotes-list > li#fn1.footnote-item'
+            )
+          )
+          assert(
+            document.querySelector('#fn1 a.footnote-backref[href="#fnref1"]')
+          )
+        })
+      }
+    )
   })
 })

@@ -1,6 +1,6 @@
 import { Parser } from 'htmlparser2'
 
-export default function (incrementalDom) {
+export default function(incrementalDom) {
   const {
     attr,
     elementClose,
@@ -11,15 +11,19 @@ export default function (incrementalDom) {
     text,
   } = incrementalDom
 
-  const iDOMParser = new Parser({
-    onopentag: elementOpenEnd,
-    onopentagname: name => elementOpenStart(name, '', []),
-    onattribute: attr,
-    ontext: text,
-    onclosetag: elementClose,
-  }, { decodeEntities: true })
+  const iDOMParser = new Parser(
+    {
+      onopentag: elementOpenEnd,
+      onopentagname: name => elementOpenStart(name, '', []),
+      onattribute: attr,
+      ontext: text,
+      onclosetag: elementClose,
+    },
+    { decodeEntities: true }
+  )
 
-  const wrapIncrementalDOM = html => ((typeof html === 'function') ? html() : iDOMParser.write(html))
+  const wrapIncrementalDOM = html =>
+    typeof html === 'function' ? html() : iDOMParser.write(html)
 
   return {
     renderAttrsToArray(token) {
