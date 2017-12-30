@@ -38,7 +38,14 @@ export default {
         exclude: /node_modules/,
         loader: 'babel-loader',
         options: {
-          presets: [['es2015', { modules: false }]],
+          [[
+            "env", {
+              "modules": false,
+              "targets": {
+                "browsers": ['> 1%', 'last 2 versions', 'Firefox ESR', 'ie >= 9']
+              }
+            }
+          ]],
         },
       },
     ],
