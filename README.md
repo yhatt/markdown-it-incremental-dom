@@ -139,10 +139,10 @@ $ yarn build
 ### Publish to npm
 
 ```bash
-$ npm publish
+$ yarn publish
 ```
 
-:warning: ***CAUTION:*** You should not use `yarn publish` when you would publish to npm. It would cause publishing wrong / empty build because the building process on `prepublish` will run after packaging.
+:warning: Use yarn >= 1.0.0 or npm >= 5.0.0.
 
 ## Author
 
