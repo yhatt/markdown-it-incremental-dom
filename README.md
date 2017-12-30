@@ -13,7 +13,7 @@ Let's see key features: **[https://yhatt.github.io/markdown-it-incremental-dom/]
 
 ## Requirement
 
-- [markdown-it](https://github.com/markdown-it/markdown-it) >= 4.0.0 (Recommend latest version >= 8.3.1, that this plugin use it)
+- [markdown-it](https://github.com/markdown-it/markdown-it) >= 4.0.0 (Recommend latest version >= 8.4.0, that this plugin use it)
 - [Incremental DOM](https://github.com/google/incremental-dom) >= 0.5.x
 
 ## Examples
