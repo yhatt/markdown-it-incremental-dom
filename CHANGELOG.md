@@ -8,7 +8,7 @@
 * Upgrade node version to v8.9.3 LTS ([#16](https://github.com/yhatt/markdown-it-incremental-dom/pull/16))
 * Use babel-preset-env + polyfill instead of babel-preset-es2015 ([#13](https://github.com/yhatt/markdown-it-incremental-dom/pull/13))
 * Add `incremental-dom >=0.5.0` to peerDependencies ([#15](https://github.com/yhatt/markdown-it-incremental-dom/pull/15))
-* Format source code by prettier
+* Format source code by prettier ([#17](https://github.com/yhatt/markdown-it-incremental-dom/pull/17))
 
 ## v1.0.0 - 2017-03-14
 
