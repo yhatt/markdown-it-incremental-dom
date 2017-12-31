@@ -7,7 +7,7 @@ cache: yarn
 sudo: false
 
 script:
-  - yarn lint:nocache
+  - yarn lint
   - yarn test:coverage
 
 after_success: yarn coveralls

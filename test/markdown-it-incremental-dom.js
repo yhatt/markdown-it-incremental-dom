@@ -6,11 +6,14 @@ import { Parser } from 'htmlparser2'
 import MarkdownItIncrementalDOM from '../src/markdown-it-incremental-dom'
 
 describe('markdown-it-incremental-dom', () => {
-  const md = (opts = {}) => MarkdownIt().use(MarkdownItIncrementalDOM, IncrementalDOM, opts)
+  const md = (opts = {}) =>
+    MarkdownIt().use(MarkdownItIncrementalDOM, IncrementalDOM, opts)
 
   describe('markdownIt().use', () => {
     context('when Incremental DOM argument is omitted', () => {
-      afterEach(() => { delete window.IncrementalDOM })
+      afterEach(() => {
+        delete window.IncrementalDOM
+      })
 
       it('fails injection if window.IncrementalDOM is not defined', () => {
         assert.throws(() => MarkdownIt().use(MarkdownItIncrementalDOM))
@@ -26,7 +29,9 @@ describe('markdown-it-incremental-dom', () => {
       describe('incrementalizeDefaultRules property', () => {
         let spy
 
-        beforeEach(() => { spy = sinon.spy(Parser.prototype, 'write') })
+        beforeEach(() => {
+          spy = sinon.spy(Parser.prototype, 'write')
+        })
         afterEach(() => spy.restore())
 
         const mdString = '`code_inline`'
@@ -36,8 +41,7 @@ describe('markdown-it-incremental-dom', () => {
           it('parses HTML string by htmlparser2', () => {
             const func = md({
               incrementalizeDefaultRules: false,
-            })
-              .renderInlineToIncrementalDOM(mdString)
+            }).renderInlineToIncrementalDOM(mdString)
 
             IncrementalDOM.patch(document.body, func)
             assert(spy.calledWith(expectedHTML))
@@ -48,8 +52,7 @@ describe('markdown-it-incremental-dom', () => {
           it('does not parse HTML string in overridden rule', () => {
             const func = md({
               incrementalizeDefaultRules: true,
-            })
-              .renderInlineToIncrementalDOM(mdString)
+            }).renderInlineToIncrementalDOM(mdString)
 
             IncrementalDOM.patch(document.body, func)
             assert(!spy.calledWith(expectedHTML))
@@ -70,7 +73,9 @@ describe('markdown-it-incremental-dom', () => {
 
   describe('.renderInlineToIncrementalDOM', () => {
     it('returns patchable function by specified Incremental DOM', () => {
-      const func = md().renderInlineToIncrementalDOM('markdown-it-incremental-dom')
+      const func = md().renderInlineToIncrementalDOM(
+        'markdown-it-incremental-dom'
+      )
 
       IncrementalDOM.patch(document.body, func)
       assert(document.body.innerHTML === 'markdown-it-incremental-dom')

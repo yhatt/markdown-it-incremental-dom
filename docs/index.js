@@ -1,4 +1,4 @@
-(function(){
+;(function() {
   document.addEventListener('DOMContentLoaded', function() {
     var text = document.querySelector('#text')
     var target = document.querySelector('#target')
@@ -20,7 +20,7 @@
       text.addEventListener('input', render)
 
       Array.prototype.forEach.call(options, function(elm) {
-        elm.addEventListener('change', function(e) {
+        elm.addEventListener('change', function() {
           method = this.value
           render()
         })
@@ -34,12 +34,15 @@
     superagent
       .get('./docs.md')
       .set('Content-Type', 'text/plain')
-      .then(function(res) {
-        text.value = res.text
-        initializeRendering()
-      }, function(res) {
-        text.value = '*Failed initializing docs.*'
-        initializeRendering()
-      })
+      .then(
+        function(res) {
+          text.value = res.text
+          initializeRendering()
+        },
+        function() {
+          text.value = '*Failed initializing docs.*'
+          initializeRendering()
+        }
+      )
   })
 })()

@@ -2,13 +2,12 @@ env:
   node: true
   es6: true
 
-extends: airbnb-base
+extends:
+  - airbnb-base
+  - plugin:prettier/recommended
 
 rules:
   class-methods-use-this: off
   func-names: off
   no-param-reassign: off
   no-undef: off
-  semi:
-    - error
-    - never

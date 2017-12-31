@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
-body, html {
+body,
+html {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -19,7 +20,7 @@ header {
   color: #fff;
   height: 70px;
   line-height: 70px;
-  padding: 0 .5em;
+  padding: 0 0.5em;
 }
 
 header a {
@@ -62,7 +63,7 @@ h1 {
 
   height: 30px;
   line-height: 30px;
-  padding: 0 .5em;
+  padding: 0 0.5em;
 }
 
 .text-container {
