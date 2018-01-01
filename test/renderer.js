@@ -102,12 +102,12 @@ describe('Renderer', () => {
       })
 
       it('renders invalid HTML', () => {
-        const rendered = md({ html: true }).idom('<div>inva<lid</div>')
+        md({ html: true }).idom('<div>inva<lid</div>')
         assert(document.querySelector('div').textContent === 'inva')
       })
 
       it('renders invalid nesting HTML', () => {
-        const rendered = md({ html: true }).idom('<table>\n<tr\n</table>')
+        md({ html: true }).idom('<table>\n<tr\n</table>')
         assert(document.querySelector('table > tr'))
       })
     })
