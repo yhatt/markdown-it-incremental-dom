@@ -97,8 +97,12 @@ describe('Renderer', () => {
 
     context('with true', () => {
       it('renders HTML tag', () => {
-        const rendered = md({ html: true }).idom(markdown)
-        assert(rendered === `<p>${markdown}</p>`)
+        assert(md({ html: true }).idom(markdown) === `<p>${markdown}</p>`)
+      })
+
+      it('renders empty element without slash', () => {
+        md({ html: true }).idom('<hr><img src="test.png">')
+        assert(document.querySelector('hr + img'))
       })
 
       it('renders invalid HTML', () => {
