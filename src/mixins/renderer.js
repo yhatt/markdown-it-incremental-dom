@@ -24,10 +24,7 @@ export default function(incrementalDom) {
       ontext: text,
       onclosetag: name => elementClose(sanitizeName(name)),
     },
-    {
-      decodeEntities: true,
-      xmlMode: true,
-    }
+    { decodeEntities: true }
   )
 
   const wrapIncrementalDOM = html =>
