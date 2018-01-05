@@ -8,6 +8,7 @@ sudo: false
 
 script:
   - yarn lint
+  - yarn format:check
   - yarn test:coverage
 
 after_success: yarn coveralls
