@@ -11,13 +11,18 @@ export default function(incrementalDom) {
     text,
   } = incrementalDom
 
+  const sanitizeName = name => name.replace(/[^-:\w]/g, '')
+
   const iDOMParser = new Parser(
     {
-      onopentag: elementOpenEnd,
-      onopentagname: name => elementOpenStart(name, '', []),
-      onattribute: attr,
+      onopentag: name => elementOpenEnd(sanitizeName(name)),
+      onopentagname: name => elementOpenStart(sanitizeName(name), '', []),
+      onattribute: (name, value) => {
+        const sanitizedName = sanitizeName(name)
+        if (sanitizedName !== '') attr(sanitizedName, value)
+      },
       ontext: text,
-      onclosetag: elementClose,
+      onclosetag: name => elementClose(sanitizeName(name)),
     },
     { decodeEntities: true }
   )
