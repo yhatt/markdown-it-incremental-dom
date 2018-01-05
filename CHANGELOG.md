@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Fixed
+
+* Sanitize HTML element name and attributes to avoid occuring errors while rendering invalid HTML ([#18](https://github.com/yhatt/markdown-it-incremental-dom/pull/18))
+
 ### Changed
 
 * Upgrade dependencies to latest version ([#12](https://github.com/yhatt/markdown-it-incremental-dom/pull/12))
