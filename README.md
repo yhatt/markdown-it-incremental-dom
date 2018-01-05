@@ -158,10 +158,10 @@ $ yarn format --write  # Fix formatting by Prettier
 ### Publish to npm
 
 ```bash
-$ yarn publish
+$ npm publish
 ```
 
-:warning: Use yarn >= 1.0.0 or npm >= 5.0.0.
+:warning: Use npm >= 5.0.0.
 
 ## Author
 
