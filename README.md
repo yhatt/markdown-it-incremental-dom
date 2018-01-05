@@ -73,12 +73,14 @@ You can use the recent version through CDN provides by [unpkg.com](https://unpkg
 We recommend using [yarn](https://yarnpkg.com/) to install.
 
 ```bash
+$ yarn add incremental-dom markdown-it
 $ yarn add markdown-it-incremental-dom
 ```
 
 If you wanna use npm, try this:
 
 ```bash
+$ npm install incremental-dom markdown-it --save
 $ npm install markdown-it-incremental-dom --save
 ```
 
