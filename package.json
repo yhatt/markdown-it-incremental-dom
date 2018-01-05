@@ -1,6 +1,6 @@
 {
   "name": "markdown-it-incremental-dom",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "markdown-it renderer plugin by using Incremental DOM.",
   "main": "lib/markdown-it-incremental-dom.js",
   "browser": "dist/markdown-it-incremental-dom.js",
