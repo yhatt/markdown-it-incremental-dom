@@ -31,7 +31,7 @@
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "format": "prettier **/*.{md,json,css}",
     "lint": "eslint .",
-    "prepack": "cross-env NPM_EXECPATH='yarn run' npm-run-all --parallel lint:nocache test:coverage --sequential build",
+    "prepack": "cross-env NPM_EXECPATH='yarn run' npm-run-all --parallel lint test:coverage --sequential build",
     "test": "cross-env NODE_ENV=test mocha",
     "test:coverage": "cross-env NODE_ENV=test nyc mocha"
   },
