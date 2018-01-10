@@ -1,4 +1,4 @@
-import { Parser } from 'htmlparser2'
+import Parser from 'htmlparser2/lib/Parser'
 
 export default function(incrementalDom) {
   const {
