@@ -1,20 +1,29 @@
 {
-  "presets": [[
-    "env", {
-      "targets": {
-        "node": "4.2"
-      },
-      "useBuiltIns": true
-    }
-  ]],
+  "presets": [
+    [
+      "env",
+      {
+        "targets": {
+          "node": "4.2"
+        },
+        "useBuiltIns": true
+      }
+    ]
+  ],
   "plugins": [
     ["transform-object-rest-spread", { "useBuiltIns": true }],
     "add-module-exports"
   ],
   "env": {
     "test": {
-      "presets": ["babel-preset-power-assert"],
-      "plugins": ["istanbul"]
+      "presets": [
+        ["env", { "targets": { "node": "current" }, "useBuiltIns": true }],
+        "babel-preset-power-assert"
+      ],
+      "plugins": [
+        ["transform-object-rest-spread", { "useBuiltIns": true }],
+        "istanbul"
+      ]
     }
   }
 }
