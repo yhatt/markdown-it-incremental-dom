@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Fixed
+
+* Reduce bundle size of built for browser
+
 ## v1.1.1 - 2018-01-06
 
 ### Fixed
