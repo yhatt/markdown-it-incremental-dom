@@ -1,22 +1,12 @@
 {
-  "presets": [
-    [
-      "@babel/preset-env",
-      { "targets": { "node": "4.2" }, "useBuiltIns": "usage" }
-    ]
-  ],
+  "presets": [["@babel/preset-env", { "targets": { "node": "4.2" } }]],
   "plugins": [
     ["@babel/plugin-proposal-object-rest-spread", { "useBuiltIns": true }],
     "add-module-exports"
   ],
   "env": {
     "test": {
-      "presets": [
-        [
-          "@babel/preset-env",
-          { "targets": { "node": "current" }, "useBuiltIns": "usage" }
-        ]
-      ],
+      "presets": [["@babel/preset-env", { "targets": { "node": "current" } }]],
       "plugins": [
         ["@babel/plugin-proposal-object-rest-spread", { "useBuiltIns": true }],
         "babel-plugin-empower-assert",
