@@ -1,15 +1,5 @@
 {
-  "presets": [
-    [
-      "env",
-      {
-        "targets": {
-          "node": "4.2"
-        },
-        "useBuiltIns": true
-      }
-    ]
-  ],
+  "presets": [["env", { "targets": { "node": "4.2" }, "useBuiltIns": true }]],
   "plugins": [
     ["transform-object-rest-spread", { "useBuiltIns": true }],
     "add-module-exports"
