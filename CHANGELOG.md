@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+### Changed
+
 * Upgrade Babel to v7 beta ([#23](https://github.com/yhatt/markdown-it-incremental-dom/pull/23))
 
 ## v1.1.2 - 2018-01-11
