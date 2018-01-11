@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## v1.1.2 - 2018-01-11
+
 ### Fixed
 
 * Reduce bundle size of built for browser ([#22](https://github.com/yhatt/markdown-it-incremental-dom/pull/22))
@@ -10,7 +12,7 @@
 
 ### Fixed
 
-* Sanitize HTML element name and attributes to avoid occuring errors while rendering invalid HTML ([#18](https://github.com/yhatt/markdown-it-incremental-dom/pull/18))
+* Sanitize HTML element name and attributes to avoid occurring errors while rendering invalid HTML ([#18](https://github.com/yhatt/markdown-it-incremental-dom/pull/18))
 
 ### Changed
 
