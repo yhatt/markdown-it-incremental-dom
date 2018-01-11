@@ -46,6 +46,7 @@
     "@babel/cli": "^7.0.0-beta.37",
     "@babel/core": "^7.0.0-beta.37",
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.37",
+    "@babel/polyfill": "^7.0.0-beta.37",
     "@babel/preset-env": "^7.0.0-beta.37",
     "@babel/register": "^7.0.0-beta.37",
     "babel-loader": "8.0.0-beta.0",
