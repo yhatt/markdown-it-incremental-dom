@@ -1,3 +1,4 @@
+const objectRestSpread = require('@babel/plugin-proposal-object-rest-spread')
 const path = require('path')
 const webpack = require('webpack')
 const packageConfig = require('./package.json')
@@ -45,12 +46,7 @@ exports.default = {
               { modules: false, targets: { browsers }, useBuiltIns: 'usage' },
             ],
           ],
-          plugins: [
-            [
-              '@babel/plugin-proposal-object-rest-spread',
-              { useBuiltIns: true },
-            ],
-          ],
+          plugins: [[objectRestSpread, { useBuiltIns: true }]],
         },
       },
     ],
