@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Fixed
+
+* Reduce bundle size of built for browser ([#22](https://github.com/yhatt/markdown-it-incremental-dom/pull/22))
+
 ## v1.1.1 - 2018-01-06
 
 ### Fixed

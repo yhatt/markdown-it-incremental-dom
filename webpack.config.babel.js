@@ -13,6 +13,7 @@ https://github.com/fb55/htmlparser2/raw/master/LICENSE
 ${packageConfig.repository.url}/raw/master/LICENSE`
 
 const basename = path.basename(packageConfig.browser, '.js')
+const browsers = ['> 1%', 'last 2 versions', 'Firefox ESR', 'IE >= 9']
 
 export default {
   entry: {
@@ -37,23 +38,14 @@ export default {
         exclude: /node_modules/,
         loader: 'babel-loader',
         options: {
+          babelrc: false,
           presets: [
             [
               'env',
-              {
-                modules: false,
-                targets: {
-                  browsers: [
-                    '> 1%',
-                    'last 2 versions',
-                    'Firefox ESR',
-                    'ie >= 9',
-                  ],
-                },
-                useBuiltIns: true,
-              },
+              { modules: false, targets: { browsers }, useBuiltIns: true },
             ],
           ],
+          plugins: [['transform-object-rest-spread', { useBuiltIns: true }]],
         },
       },
     ],
