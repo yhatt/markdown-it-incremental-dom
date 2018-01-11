@@ -1,6 +1,6 @@
-import path from 'path'
-import webpack from 'webpack'
-import packageConfig from './package.json'
+const path = require('path')
+const webpack = require('webpack')
+const packageConfig = require('./package.json')
 
 const banner = `${packageConfig.name} ${packageConfig.version}
 ${packageConfig.repository.url}
@@ -15,7 +15,7 @@ ${packageConfig.repository.url}/raw/master/LICENSE`
 const basename = path.basename(packageConfig.browser, '.js')
 const browsers = ['> 1%', 'last 2 versions', 'Firefox ESR', 'IE >= 9']
 
-export default {
+exports.default = {
   entry: {
     [basename]: './entry.js',
     [`${basename}.min`]: './entry.js',
@@ -41,11 +41,16 @@ export default {
           babelrc: false,
           presets: [
             [
-              'env',
-              { modules: false, targets: { browsers }, useBuiltIns: true },
+              '@babel/preset-env',
+              { modules: false, targets: { browsers }, useBuiltIns: 'usage' },
             ],
           ],
-          plugins: [['transform-object-rest-spread', { useBuiltIns: true }]],
+          plugins: [
+            [
+              '@babel/plugin-proposal-object-rest-spread',
+              { useBuiltIns: true },
+            ],
+          ],
         },
       },
     ],
