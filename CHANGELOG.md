@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Changed
+
+* Update README.md and demo page to use jsDelivr CDN
+
 ## v1.1.2 - 2018-01-11
 
 ### Fixed
