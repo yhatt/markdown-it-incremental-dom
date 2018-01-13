@@ -43,7 +43,7 @@ Define as `window.markdownitIncrementalDOM`.
 <html>
 <head>
   <script src="https://ajax.googleapis.com/ajax/libs/incrementaldom/0.5.1/incremental-dom-min.js"></script>
-  <script src="https://cdn.jsdelivr.net/markdown-it/8.3.1/markdown-it.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/markdown-it@8.4.0/dist/markdown-it.min.js"></script>
   <script src="./node_modules/markdown-it-incremental-dom/dist/markdown-it-incremental-dom.min.js"></script>
 </head>
 <body>
@@ -63,10 +63,14 @@ Define as `window.markdownitIncrementalDOM`.
 
 #### CDN
 
-You can use the recent version through CDN provides by [unpkg.com](https://unpkg.com/).
+You can use [the recent version through CDN](https://cdn.jsdelivr.net/npm/markdown-it-incremental-dom@1/dist/markdown-it-incremental-dom.min.js) provides by [jsDelivr](https://www.jsdelivr.com/).
 
-* **[Compressed (Recommend)](https://unpkg.com/markdown-it-incremental-dom/dist/markdown-it-incremental-dom.min.js)**
-* [Uncompressed](https://unpkg.com/markdown-it-incremental-dom/dist/markdown-it-incremental-dom.js)
+```html
+<script src="https://cdn.jsdelivr.net/npm/markdown-it-incremental-dom@1/dist/markdown-it-incremental-dom.min.js"></script>
+```
+
+* **[Compressed (Recommend)](https://cdn.jsdelivr.net/npm/markdown-it-incremental-dom@1/dist/markdown-it-incremental-dom.min.js)**
+* [Uncompressed](https://cdn.jsdelivr.net/npm/markdown-it-incremental-dom@1/dist/markdown-it-incremental-dom.js)
 
 ## Installation
 
