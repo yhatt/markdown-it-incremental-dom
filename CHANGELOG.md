@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Changed
+
+* Update README.md and demo page to use jsDelivr CDN ([#24](https://github.com/yhatt/markdown-it-incremental-dom/pull/24))
+
 ## v1.1.2 - 2018-01-11
 
 ### Fixed
