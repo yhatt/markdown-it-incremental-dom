@@ -4,7 +4,7 @@
 
 ### Fixed
 
-* Fix incrementalized softbreak rule to keep break as text
+* Fix incrementalized softbreak rule to keep break as text ([#25](https://github.com/yhatt/markdown-it-incremental-dom/pull/25))
 
 ### Changed
 
