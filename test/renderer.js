@@ -121,9 +121,11 @@ describe('Renderer', () => {
     const markdown = 'break\ntest'
 
     context('with false', () => {
-      it('ignores breaks', () => {
+      it('keeps breaks as text', () => {
         md({ breaks: false }).idom(markdown)
+
         assert(!document.querySelector('br'))
+        assert(document.querySelector('p').textContent === markdown)
       })
     })
 
