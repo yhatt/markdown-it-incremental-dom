@@ -25,9 +25,7 @@ export default function(incrementalDom) {
     },
 
     softbreak(tokens, idx, options) {
-      return () => {
-        if (options.breaks) elementVoid('br')
-      }
+      return () => (options.breaks ? elementVoid('br') : text('\n'))
     },
 
     text(tokens, idx) {

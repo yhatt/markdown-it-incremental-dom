@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Fixed
+
+* Fix incrementalized softbreak rule to keep break as text ([#25](https://github.com/yhatt/markdown-it-incremental-dom/pull/25))
+
 ### Changed
 
 * Update README.md and demo page to use jsDelivr CDN ([#24](https://github.com/yhatt/markdown-it-incremental-dom/pull/24))
