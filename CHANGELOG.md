@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Fixed
+
+* Fix incrementalized softbreak rule to keep break as text ([#25](https://github.com/yhatt/markdown-it-incremental-dom/pull/25))
+
 ### Changed
 
 * Upgrade Babel to v7 beta ([#23](https://github.com/yhatt/markdown-it-incremental-dom/pull/23))
