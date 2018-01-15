@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## v1.2.0 - 2018-01-15
+
 ### Fixed
 
 * Fix incrementalized softbreak rule to keep break as text ([#25](https://github.com/yhatt/markdown-it-incremental-dom/pull/25))
