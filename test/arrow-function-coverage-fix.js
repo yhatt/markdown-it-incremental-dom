@@ -9,7 +9,7 @@ module.exports = function hacks() {
       Program(programPath) {
         programPath.traverse({
           ArrowFunctionExpression(path) {
-            const node = path.node
+            const { node } = path
             node.expression = node.body.type !== 'BlockStatement'
           },
         })
