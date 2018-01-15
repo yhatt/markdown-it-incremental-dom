@@ -1,5 +1,5 @@
 --recursive
 --reporter spec
---require babel-core/register
+--require @babel/register
 --require test/setup
 --ui bdd

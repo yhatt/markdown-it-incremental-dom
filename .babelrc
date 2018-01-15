@@ -1,19 +1,20 @@
 {
-  "presets": [["env", { "targets": { "node": "4.2" }, "useBuiltIns": true }]],
+  "presets": [["@babel/preset-env", { "targets": { "node": "4.2" } }]],
   "plugins": [
-    ["transform-object-rest-spread", { "useBuiltIns": true }],
+    ["@babel/plugin-proposal-object-rest-spread", { "useBuiltIns": true }],
     "add-module-exports"
   ],
   "env": {
     "test": {
-      "presets": [
-        ["env", { "targets": { "node": "current" }, "useBuiltIns": true }],
-        "babel-preset-power-assert"
-      ],
+      "presets": [["@babel/preset-env", { "targets": { "node": "current" } }]],
       "plugins": [
-        ["transform-object-rest-spread", { "useBuiltIns": true }],
+        ["@babel/plugin-proposal-object-rest-spread", { "useBuiltIns": true }],
+        "babel-plugin-empower-assert",
+        "babel-plugin-espower",
+        "./test/arrow-function-coverage-fix.js",
         "istanbul"
-      ]
+      ],
+      "ignore": ["test/arrow-function-coverage-fix.js"]
     }
   }
 }

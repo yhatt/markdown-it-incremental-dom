@@ -4,7 +4,10 @@ export default function(incrementalDom) {
   return {
     code_inline(tokens, idx, options, env, slf) {
       return () => {
-        elementOpen('code', '', [], ...slf.renderAttrsToArray(tokens[idx]))
+        elementOpen.apply(
+          this,
+          ['code', '', []].concat(slf.renderAttrsToArray(tokens[idx]))
+        )
         text(tokens[idx].content)
         elementClose('code')
       }
@@ -12,7 +15,10 @@ export default function(incrementalDom) {
 
     code_block(tokens, idx, options, env, slf) {
       return () => {
-        elementOpen('pre', '', [], ...slf.renderAttrsToArray(tokens[idx]))
+        elementOpen.apply(
+          this,
+          ['pre', '', []].concat(slf.renderAttrsToArray(tokens[idx]))
+        )
         elementOpen('code')
         text(tokens[idx].content)
         elementClose('code')

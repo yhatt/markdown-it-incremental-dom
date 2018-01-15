@@ -16,7 +16,7 @@ export default function(incrementalDom) {
   const iDOMParser = new Parser(
     {
       onopentag: name => elementOpenEnd(sanitizeName(name)),
-      onopentagname: name => elementOpenStart(sanitizeName(name), '', []),
+      onopentagname: name => elementOpenStart(sanitizeName(name)),
       onattribute: (name, value) => {
         const sanitizedName = sanitizeName(name)
         if (sanitizedName !== '') attr(sanitizedName, value)
@@ -41,7 +41,7 @@ export default function(incrementalDom) {
         tokens.forEach((current, i) => {
           const { type } = current
 
-          if (typeof this.rules[type] !== 'undefined') {
+          if (this.rules[type] !== undefined) {
             wrapIncrementalDOM(this.rules[type](tokens, i, options, env, this))
           } else {
             this.renderToken(tokens, i, options)()
@@ -55,12 +55,15 @@ export default function(incrementalDom) {
         const token = tokens[idx]
         if (token.hidden) return
 
-        if (token.nesting === 0) {
-          elementVoid(token.tag, '', [], ...this.renderAttrsToArray(token))
-        } else if (token.nesting === -1) {
+        if (token.nesting === -1) {
           elementClose(token.tag)
         } else {
-          elementOpen(token.tag, '', [], ...this.renderAttrsToArray(token))
+          const func = token.nesting === 0 ? elementVoid : elementOpen
+
+          func.apply(
+            this,
+            [token.tag, '', []].concat(this.renderAttrsToArray(token))
+          )
         }
       }
     },
@@ -72,7 +75,7 @@ export default function(incrementalDom) {
 
           if (type === 'inline') {
             this.renderInline(current.children, options, env)()
-          } else if (typeof this.rules[type] !== 'undefined') {
+          } else if (this.rules[type] !== undefined) {
             wrapIncrementalDOM(this.rules[type](tokens, i, options, env, this))
           } else {
             this.renderToken(tokens, i, options, env)()

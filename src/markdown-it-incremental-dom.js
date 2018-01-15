@@ -1,30 +1,26 @@
-import rendererMixin from './mixins/renderer'
-import incrementalizedRules from './mixins/rules'
-
-const mixinTo = (base, mixin) =>
-  Object.assign(Object.create(Object.getPrototypeOf(base)), base, mixin)
-
-const processIncrementalDOMArgument = incrementalDOM =>
-  !incrementalDOM && typeof window !== 'undefined'
-    ? window.IncrementalDOM
-    : incrementalDOM
+import renderer from './mixins/renderer'
+import rules from './mixins/rules'
 
 export default function(md, target, opts = {}) {
   const options = { incrementalizeDefaultRules: true, ...opts }
-  const incrementalDOM = processIncrementalDOMArgument(target)
-  const mixin = rendererMixin(incrementalDOM)
+  const incrementalDOM = !target && window ? window.IncrementalDOM : target
+  const mixin = renderer(incrementalDOM)
 
   const render = function(method, src, env) {
-    const renderer = mixinTo(this.renderer, mixin)
+    const extendedRenderer = Object.assign(
+      Object.create(Object.getPrototypeOf(this.renderer)),
+      this.renderer,
+      mixin
+    )
 
     if (options.incrementalizeDefaultRules) {
-      renderer.rules = {
-        ...renderer.rules,
-        ...incrementalizedRules(incrementalDOM),
+      extendedRenderer.rules = {
+        ...extendedRenderer.rules,
+        ...rules(incrementalDOM),
       }
     }
 
-    return renderer.render(this[method](src, env), this.options, env)
+    return extendedRenderer.render(this[method](src, env), this.options, env)
   }
 
   md.renderToIncrementalDOM = function(src, env = {}) {
