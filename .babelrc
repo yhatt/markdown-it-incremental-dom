@@ -11,8 +11,10 @@
         ["@babel/plugin-proposal-object-rest-spread", { "useBuiltIns": true }],
         "babel-plugin-empower-assert",
         "babel-plugin-espower",
+        "./test/arrow-function-coverage-fix.js",
         "istanbul"
-      ]
+      ],
+      "ignore": ["test/arrow-function-coverage-fix.js"]
     }
   }
 }
