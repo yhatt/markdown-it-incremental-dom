@@ -29,7 +29,7 @@
     "clean:lib": "rimraf lib",
     "clean:dist": "rimraf dist",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
-    "format": "prettier **/*.{md,json,css}",
+    "format": "prettier \"**/*.{md,json,css}\"",
     "format:check": "yarn --mutex file run format -l",
     "lint": "eslint .",
     "prepack": "npm-run-all --npm-path yarn --parallel lint test:coverage --sequential build",
