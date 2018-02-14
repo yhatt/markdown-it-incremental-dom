@@ -118,7 +118,7 @@ require('markdown-it')().use(
 )
 ```
 
-* **`incrementalizeDefaultRules`**: For better performance, this plugin would override a few default renderer rules only when you calls injected methods. If the other plugins that override default rules have occured any problem, You can disable overriding by setting `false`. _(`true` by default)_
+* **`incrementalizeDefaultRules`**: For better performance, this plugin would override a few default renderer rules only when you calls injected methods. If the other plugins that override default rules have occurred any problem, You can disable overriding by setting `false`. _(`true` by default)_
 
 ### Rendering methods
 
