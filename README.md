@@ -122,7 +122,7 @@ require('markdown-it')().use(
 
 ### Rendering methods
 
-#### `MarkdownIt.renderToIncrementalDOM(src[, env]) => Function`
+#### `MarkdownIt.renderToIncrementalDOM(src[, env])` => `Function`
 
 Similar to [`MarkdownIt.render(src[, env])`](https://markdown-it.github.io/markdown-it/#MarkdownIt.render) but _it returns a function for Incremental DOM_. It means doesn't render Markdown immediately.
 
@@ -136,9 +136,31 @@ const func = md.renderToIncrementalDOM('# Hello, Incremental DOM!')
 IncrementalDOM.patch(node, func)
 ```
 
-#### `MarkdownIt.renderInlineToIncrementalDOM(src[, env]) => Function`
+#### `MarkdownIt.renderInlineToIncrementalDOM(src[, env])` => `Function`
 
 Similar to `MarkdownIt.renderToIncrementalDOM` but it wraps [`MarkdownIt.renderInline(src[, env])`](https://markdown-it.github.io/markdown-it/#MarkdownIt.renderInline).
+
+### Renderer property
+
+#### _get_ `MarkdownIt.IncrementalDOMRenderer` => [`Renderer`](https://markdown-it.github.io/markdown-it/#Renderer)
+
+Returns [`Renderer`](https://markdown-it.github.io/markdown-it/#Renderer) instance that includes Incremental DOM support.
+
+It will inject Incremental DOM features into the current state of [`MarkdownIt.renderer`](https://markdown-it.github.io/markdown-it/#MarkdownIt.prototype.renderer) at getting this property.
+
+> **_NOTE:_** This property is provided for the expert. Normally you should use `renderToIncrementalDOM()`.
+>
+> But it might be useful if you have to parse Markdown and operate tokens manually.
+>
+> ```javascript
+> const md = new MarkdownIt()
+> const tokens = md.parse('# Hello')
+>
+> // ...You can operate tokens here...
+>
+> const patch = md.IncrementalDOMRenderer.render(tokens, md.options)
+> IncrementalDOM.patch(document.body, patch)
+> ```
 
 ## Development
 

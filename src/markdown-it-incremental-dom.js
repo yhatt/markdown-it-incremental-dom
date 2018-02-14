@@ -6,27 +6,25 @@ export default function(md, target, opts = {}) {
   const incrementalDOM = !target && window ? window.IncrementalDOM : target
   const mixin = renderer(incrementalDOM)
 
-  const render = function(method, src, env) {
-    const extendedRenderer = Object.assign(
-      Object.create(Object.getPrototypeOf(this.renderer)),
-      this.renderer,
-      mixin
-    )
+  Object.defineProperty(md, 'IncrementalDOMRenderer', {
+    get() {
+      const extended = Object.assign(
+        Object.create(Object.getPrototypeOf(md.renderer)),
+        md.renderer,
+        mixin
+      )
 
-    if (options.incrementalizeDefaultRules) {
-      extendedRenderer.rules = {
-        ...extendedRenderer.rules,
-        ...rules(incrementalDOM),
+      if (options.incrementalizeDefaultRules) {
+        extended.rules = { ...extended.rules, ...rules(incrementalDOM) }
       }
-    }
 
-    return extendedRenderer.render(this[method](src, env), this.options, env)
-  }
+      return extended
+    },
+  })
 
-  md.renderToIncrementalDOM = function(src, env = {}) {
-    return render.call(this, 'parse', src, env)
-  }
-  md.renderInlineToIncrementalDOM = function(src, env = {}) {
-    return render.call(this, 'parseInline', src, env)
-  }
+  md.renderToIncrementalDOM = (src, env = {}) =>
+    md.IncrementalDOMRenderer.render(md.parse(src, env), md.options, env)
+
+  md.renderInlineToIncrementalDOM = (src, env = {}) =>
+    md.IncrementalDOMRenderer.render(md.parseInline(src, env), md.options, env)
 }

@@ -62,6 +62,28 @@ describe('markdown-it-incremental-dom', () => {
     })
   })
 
+  describe('get IncrementalDOMRenderer', () => {
+    it('returns IncrementalDOM renderer that is injected into current state', () => {
+      const instance = md()
+      const { options } = instance
+      const tokens = instance.parse('# test')
+
+      instance.renderer.rules.heading_open = () => '['
+      instance.renderer.rules.heading_close = () => ']'
+
+      const rendererOne = instance.IncrementalDOMRenderer
+      IncrementalDOM.patch(document.body, rendererOne.render(tokens, options))
+      assert(document.body.innerHTML === '[test]')
+
+      instance.renderer.rules.heading_open = () => '^'
+      instance.renderer.rules.heading_close = () => '$'
+
+      const rendererTwo = instance.IncrementalDOMRenderer
+      IncrementalDOM.patch(document.body, rendererTwo.render(tokens, options))
+      assert(document.body.innerHTML === '^test$')
+    })
+  })
+
   describe('.renderToIncrementalDOM', () => {
     it('returns patchable function by specified Incremental DOM', () => {
       const func = md().renderToIncrementalDOM('markdown-it-incremental-dom')
