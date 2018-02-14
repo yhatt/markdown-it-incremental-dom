@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## v1.3.0 - 2018-02-15
+
 ### Added
 
 * Define `IncrementalDOMRenderer` as public getter ([#28](https://github.com/yhatt/markdown-it-incremental-dom/pull/28))
