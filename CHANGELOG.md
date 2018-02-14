@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Added
+
+* Define `IncrementalDOMRenderer` as public getter ([#28](https://github.com/yhatt/markdown-it-incremental-dom/pull/28))
+
 ### Fixed
 
 * Fix format script to work globstar correctly ([#26](https://github.com/yhatt/markdown-it-incremental-dom/pull/26))
