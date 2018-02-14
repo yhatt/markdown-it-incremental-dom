@@ -14,7 +14,7 @@
 
 ### Changed
 
-* Upgrade dependencies to latest version ([#29](https://github.com/yhatt/markdown-it-incremental-dom/pull/30))
+* Upgrade dependencies to latest version ([#30](https://github.com/yhatt/markdown-it-incremental-dom/pull/30))
 
 ## v1.2.0 - 2018-01-15
 
