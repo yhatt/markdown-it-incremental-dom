@@ -1,4 +1,5 @@
 import assert from 'assert'
+import { stripIndents } from 'common-tags'
 import MarkdownIt from 'markdown-it'
 import MarkdownItFootnote from 'markdown-it-footnote'
 import MarkdownItSub from 'markdown-it-sub'
@@ -113,6 +114,26 @@ describe('Renderer', () => {
       it('renders invalid nesting HTML', () => {
         md({ html: true }).idom('<table>\n<tr\n</table>')
         assert(document.querySelector('table > tr'))
+      })
+
+      it('renders inline SVG', () => {
+        const svg = stripIndents`
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+            <defs>
+              <linearGradient id="gradation" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#f00" />
+                <stop offset="100%" stop-color="#00f" />
+              </linearGradient>
+            </defs>
+            <rect x="0" y="0" width="32" height="32" fill="url(#gradation)" />
+          </svg>
+        `
+
+        md({ html: true }).idom(svg)
+        assert(document.querySelector('svg[xmlns][viewBox="0 0 32 32"]'))
+        assert(document.querySelector('svg > defs > linearGradient#gradation'))
+        assert(document.querySelector('#gradation > stop + stop'))
+        assert(document.querySelector('svg > rect[x][y][width][height][fill]'))
       })
     })
   })
