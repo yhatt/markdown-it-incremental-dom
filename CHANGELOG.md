@@ -5,6 +5,7 @@
 ### Fixed
 
 * Fix format script to work globstar correctly ([#26](https://github.com/yhatt/markdown-it-incremental-dom/pull/26))
+* Fix build entry and module path for browser ([#27](https://github.com/yhatt/markdown-it-incremental-dom/pull/27))
 
 ## v1.2.0 - 2018-01-15
 
