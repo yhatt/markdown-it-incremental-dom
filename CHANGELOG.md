@@ -12,6 +12,10 @@
 * Support inline SVG correctly ([#29](https://github.com/yhatt/markdown-it-incremental-dom/pull/29))
 * Fix format script to work globstar correctly ([#26](https://github.com/yhatt/markdown-it-incremental-dom/pull/26))
 
+### Changed
+
+* Upgrade dependencies to latest version ([#29](https://github.com/yhatt/markdown-it-incremental-dom/pull/30))
+
 ## v1.2.0 - 2018-01-15
 
 ### Fixed
