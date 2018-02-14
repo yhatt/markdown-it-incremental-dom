@@ -9,31 +9,22 @@ export default function(md, target, opts = {}) {
   Object.defineProperty(md, 'IncrementalDOMRenderer', {
     get() {
       const extended = Object.assign(
-        Object.create(Object.getPrototypeOf(this.renderer)),
-        this.renderer,
+        Object.create(Object.getPrototypeOf(md.renderer)),
+        md.renderer,
         mixin
       )
 
       if (options.incrementalizeDefaultRules) {
         extended.rules = { ...extended.rules, ...rules(incrementalDOM) }
       }
+
       return extended
     },
   })
 
-  md.renderToIncrementalDOM = function(src, env = {}) {
-    return this.IncrementalDOMRenderer.render(
-      this.parse(src, env),
-      this.options,
-      env
-    )
-  }
+  md.renderToIncrementalDOM = (src, env = {}) =>
+    md.IncrementalDOMRenderer.render(md.parse(src, env), md.options, env)
 
-  md.renderInlineToIncrementalDOM = function(src, env = {}) {
-    return this.IncrementalDOMRenderer.render(
-      this.parseInline(src, env),
-      this.options,
-      env
-    )
-  }
+  md.renderInlineToIncrementalDOM = (src, env = {}) =>
+    md.IncrementalDOMRenderer.render(md.parseInline(src, env), md.options, env)
 }
