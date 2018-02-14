@@ -13,7 +13,7 @@ https://github.com/fb55/htmlparser2/raw/master/LICENSE
 @license ${packageConfig.license}
 ${packageConfig.repository.url}/raw/master/LICENSE`
 
-const basename = path.basename(packageConfig.browser, '.js')
+const basename = path.basename(packageConfig.main, '.js')
 const browsers = ['> 1%', 'last 2 versions', 'Firefox ESR', 'IE >= 9']
 
 exports.default = {
@@ -22,7 +22,7 @@ exports.default = {
     [`${basename}.min`]: './entry.js',
   },
   output: {
-    path: path.resolve(__dirname, path.dirname(packageConfig.browser)),
+    path: path.resolve(__dirname, 'dist'),
     filename: '[name].js',
     libraryTarget: 'umd',
     umdNamedDefine: true,
