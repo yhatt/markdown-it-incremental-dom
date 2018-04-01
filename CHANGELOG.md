@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Changed
+
+* Upgrade Node LTS and dependencies to latest version ([#31](https://github.com/yhatt/markdown-it-incremental-dom/pull/31))
+
 ## v1.3.0 - 2018-02-15
 
 ### Added
