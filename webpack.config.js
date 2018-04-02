@@ -15,23 +15,14 @@ ${packageConfig.repository.url}/raw/master/LICENSE`
 
 const basename = path.basename(packageConfig.main, '.js')
 const browsers = ['> 1%', 'last 2 versions', 'Firefox ESR', 'IE >= 9']
-
-exports.default = {
-  entry: {
-    [basename]: './entry.js',
-    [`${basename}.min`]: './entry.js',
-  },
+const configuration = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].js',
     libraryTarget: 'umd',
     umdNamedDefine: true,
   },
-  plugins: [
-    new webpack.BannerPlugin(banner),
-    new webpack.optimize.ModuleConcatenationPlugin(),
-    new webpack.optimize.UglifyJsPlugin({ include: /\.min\.js($|\?)/i }),
-  ],
+  plugins: [new webpack.BannerPlugin(banner)],
   module: {
     rules: [
       {
@@ -52,3 +43,12 @@ exports.default = {
     ],
   },
 }
+
+exports.default = [
+  {
+    ...configuration,
+    entry: { [basename]: './entry.js' },
+    optimization: { minimize: false },
+  },
+  { ...configuration, entry: { [`${basename}.min`]: './entry.js' } },
+]
