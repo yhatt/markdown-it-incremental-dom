@@ -1,4 +1,3 @@
-import assert from 'assert'
 import { stripIndents } from 'common-tags'
 import MarkdownIt from 'markdown-it'
 import MarkdownItFootnote from 'markdown-it-footnote'
@@ -13,36 +12,32 @@ describe('Renderer', () => {
       IncrementalDOM
     )
 
-    // returns rendered string by .renderToIncrementalDOM
-    instance.idom = (...args) => {
-      IncrementalDOM.patch(
-        document.body,
-        instance.renderToIncrementalDOM(...args)
-      )
+    // returns rendered string
+    const renderWithIncrementalDOM = (func, args) => {
+      IncrementalDOM.patch(document.body, func(...args))
       return document.body.innerHTML
     }
 
-    // returns rendered string by .renderInlineToIncrementalDOM
-    instance.iidom = (...args) => {
-      IncrementalDOM.patch(
-        document.body,
-        instance.renderInlineToIncrementalDOM(...args)
-      )
-      return document.body.innerHTML
-    }
+    instance.idom = (...args) =>
+      renderWithIncrementalDOM(instance.renderToIncrementalDOM, args)
+
+    instance.iidom = (...args) =>
+      renderWithIncrementalDOM(instance.renderInlineToIncrementalDOM, args)
 
     return instance
   }
+
+  const has = q => expect(document.querySelector(q)).toBeTruthy()
 
   context('with rendering image (tag + attributes)', () => {
     it('renders <img /> with attributes', () => {
       md().idom('![image](src "title")')
       const image = document.querySelector('img')
 
-      assert(image)
-      assert(image.getAttribute('src') === 'src')
-      assert(image.getAttribute('alt') === 'image')
-      assert(image.getAttribute('title') === 'title')
+      expect(image).toBeTruthy()
+      expect(image.getAttribute('src')).toBe('src')
+      expect(image.getAttribute('alt')).toBe('image')
+      expect(image.getAttribute('title')).toBe('title')
     })
   })
 
@@ -51,11 +46,11 @@ describe('Renderer', () => {
       md().idom('```javascript\nalert("test")\n```')
 
       const pre = document.querySelector('pre')
-      assert(pre)
+      expect(pre).toBeTruthy()
 
       const code = pre.querySelector('code.language-javascript')
-      assert(code)
-      assert(code.innerHTML.trim() === 'alert("test")')
+      expect(code).toBeTruthy()
+      expect(code.innerHTML.trim()).toBe('alert("test")')
     })
   })
 
@@ -63,57 +58,50 @@ describe('Renderer', () => {
     it('renders code block correctly', () => {
       md().idom('    <script>\n    alert("test")\n\t</script>')
 
-      const code = document.querySelector('pre > code')
-      assert(
-        code.innerHTML === '&lt;script&gt;\nalert("test")\n&lt;/script&gt;'
-      )
+      const { innerHTML } = document.querySelector('pre > code')
+      expect(innerHTML).toBe('&lt;script&gt;\nalert("test")\n&lt;/script&gt;')
     })
   })
 
-  context('with inline code rendering (overrided rule)', () => {
-    it('renders <code> correctly', () => {
-      const rendered = md().iidom('This is `<b>Inline</b>` rendering')
-      assert(
-        rendered === 'This is <code>&lt;b&gt;Inline&lt;/b&gt;</code> rendering'
-      )
-    })
-  })
+  context('with inline code rendering (overrided rule)', () =>
+    it('renders <code> correctly', () =>
+      expect(md().iidom('This is `<b>Inline</b>` rendering')).toBe(
+        'This is <code>&lt;b&gt;Inline&lt;/b&gt;</code> rendering'
+      ))
+  )
 
-  context('with rendering hardbreak (overrided rule)', () => {
-    it('renders <br> correctly', () => {
-      const rendered = md().iidom('hardbreak  \ntest')
-      assert(rendered === 'hardbreak<br>test')
-    })
-  })
+  context('with rendering hardbreak (overrided rule)', () =>
+    it('renders <br> correctly', () =>
+      expect(md().iidom('hardbreak  \ntest')).toBe('hardbreak<br>test'))
+  )
 
   context('with html option', () => {
     const markdown = '<b class="test">test</b>'
 
-    context('with false', () => {
-      it('sanitizes HTML tag', () => {
-        const rendered = md({ html: false }).idom(markdown)
-        assert(rendered === '<p>&lt;b class="test"&gt;test&lt;/b&gt;</p>')
-      })
-    })
+    context('with false', () =>
+      it('sanitizes HTML tag', () =>
+        expect(md({ html: false }).idom(markdown)).toBe(
+          '<p>&lt;b class="test"&gt;test&lt;/b&gt;</p>'
+        ))
+    )
 
     context('with true', () => {
-      it('renders HTML tag', () => {
-        assert(md({ html: true }).idom(markdown) === `<p>${markdown}</p>`)
-      })
+      it('renders HTML tag', () =>
+        expect(md({ html: true }).idom(markdown)).toBe(`<p>${markdown}</p>`))
 
       it('renders empty element without slash', () => {
         md({ html: true }).idom('<hr><img src="test.png">')
-        assert(document.querySelector('hr + img'))
+        has('hr + img')
       })
 
       it('renders invalid HTML', () => {
         md({ html: true }).idom('<div>inva<lid</div>')
-        assert(document.querySelector('div').textContent === 'inva')
+        expect(document.querySelector('div').textContent).toBe('inva')
       })
 
       it('renders invalid nesting HTML', () => {
         md({ html: true }).idom('<table>\n<tr\n</table>')
-        assert(document.querySelector('table > tr'))
+        has('table > tr')
       })
 
       it('renders inline SVG', () => {
@@ -130,10 +118,11 @@ describe('Renderer', () => {
         `
 
         md({ html: true }).idom(svg)
-        assert(document.querySelector('svg[xmlns][viewBox="0 0 32 32"]'))
-        assert(document.querySelector('svg > defs > linearGradient#gradation'))
-        assert(document.querySelector('#gradation > stop + stop'))
-        assert(document.querySelector('svg > rect[x][y][width][height][fill]'))
+
+        has('svg[xmlns][viewBox="0 0 32 32"]')
+        has('svg > defs > linearGradient#gradation')
+        has('#gradation > stop + stop')
+        has('svg > rect[x][y][width][height][fill]')
       })
     })
   })
@@ -145,15 +134,15 @@ describe('Renderer', () => {
       it('keeps breaks as text', () => {
         md({ breaks: false }).idom(markdown)
 
-        assert(!document.querySelector('br'))
-        assert(document.querySelector('p').textContent === markdown)
+        expect(document.querySelector('br')).toBeFalsy()
+        expect(document.querySelector('p').textContent).toBe(markdown)
       })
     })
 
     context('with true', () => {
       it('renders <br> on breaks', () => {
         md({ breaks: true }).idom(markdown)
-        assert(document.querySelector('br'))
+        has('br')
       })
     })
   })
@@ -162,10 +151,8 @@ describe('Renderer', () => {
     context('when markdown-it-sub is injected (simple plugin)', () => {
       const instance = md().use(MarkdownItSub)
 
-      it('renders <sub> tag correctly', () => {
-        const rendered = instance.idom('H~2~O')
-        assert(rendered === '<p>H<sub>2</sub>O</p>')
-      })
+      it('renders <sub> tag correctly', () =>
+        expect(instance.idom('H~2~O')).toBe('<p>H<sub>2</sub>O</p>'))
     })
 
     context(
@@ -177,18 +164,10 @@ describe('Renderer', () => {
         it('renders footnote correctly', () => {
           instance.idom(markdown)
 
-          assert(
-            document.querySelector('sup.footnote-ref > a#fnref1[href="#fn1"]')
-          )
-          assert(document.querySelector('hr.footnotes-sep'))
-          assert(
-            document.querySelector(
-              'section.footnotes > ol.footnotes-list > li#fn1.footnote-item'
-            )
-          )
-          assert(
-            document.querySelector('#fn1 a.footnote-backref[href="#fnref1"]')
-          )
+          has('sup.footnote-ref > a#fnref1[href="#fn1"]')
+          has('hr.footnotes-sep')
+          has('section.footnotes > ol.footnotes-list > li#fn1.footnote-item')
+          has('#fn1 a.footnote-backref[href="#fnref1"]')
         })
       }
     )

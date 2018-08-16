@@ -1,5 +1,3 @@
-import assert from 'assert'
-import sinon from 'sinon'
 import IncrementalDOM from 'incremental-dom'
 import MarkdownIt from 'markdown-it'
 import { Parser } from 'htmlparser2'
@@ -11,17 +9,14 @@ describe('markdown-it-incremental-dom', () => {
 
   describe('markdownIt().use', () => {
     context('when Incremental DOM argument is omitted', () => {
-      afterEach(() => {
-        delete window.IncrementalDOM
-      })
+      afterEach(() => delete window.IncrementalDOM)
 
-      it('fails injection if window.IncrementalDOM is not defined', () => {
-        assert.throws(() => MarkdownIt().use(MarkdownItIncrementalDOM))
-      })
+      it('fails injection if window.IncrementalDOM is not defined', () =>
+        expect(() => MarkdownIt().use(MarkdownItIncrementalDOM)).toThrow())
 
       it('succeeds injection if window.IncrementalDOM is defined', () => {
-        window = { IncrementalDOM }
-        assert.doesNotThrow(() => MarkdownIt().use(MarkdownItIncrementalDOM))
+        window.IncrementalDOM = IncrementalDOM
+        expect(() => MarkdownIt().use(MarkdownItIncrementalDOM)).not.toThrow()
       })
     })
 
@@ -30,9 +25,9 @@ describe('markdown-it-incremental-dom', () => {
         let spy
 
         beforeEach(() => {
-          spy = sinon.spy(Parser.prototype, 'write')
+          spy = jest.spyOn(Parser.prototype, 'write')
         })
-        afterEach(() => spy.restore())
+        afterEach(() => spy.mockRestore())
 
         const mdString = '`code_inline`'
         const expectedHTML = '<code>code_inline</code>'
@@ -44,7 +39,7 @@ describe('markdown-it-incremental-dom', () => {
             }).renderInlineToIncrementalDOM(mdString)
 
             IncrementalDOM.patch(document.body, func)
-            assert(spy.calledWith(expectedHTML))
+            expect(spy).toHaveBeenCalledWith(expectedHTML)
           })
         })
 
@@ -55,7 +50,7 @@ describe('markdown-it-incremental-dom', () => {
             }).renderInlineToIncrementalDOM(mdString)
 
             IncrementalDOM.patch(document.body, func)
-            assert(!spy.calledWith(expectedHTML))
+            expect(spy).not.toHaveBeenCalledWith(expectedHTML)
           })
         })
       })
@@ -73,14 +68,14 @@ describe('markdown-it-incremental-dom', () => {
 
       const rendererOne = instance.IncrementalDOMRenderer
       IncrementalDOM.patch(document.body, rendererOne.render(tokens, options))
-      assert(document.body.innerHTML === '[test]')
+      expect(document.body.innerHTML).toBe('[test]')
 
       instance.renderer.rules.heading_open = () => '^'
       instance.renderer.rules.heading_close = () => '$'
 
       const rendererTwo = instance.IncrementalDOMRenderer
       IncrementalDOM.patch(document.body, rendererTwo.render(tokens, options))
-      assert(document.body.innerHTML === '^test$')
+      expect(document.body.innerHTML).toBe('^test$')
     })
   })
 
@@ -89,7 +84,7 @@ describe('markdown-it-incremental-dom', () => {
       const func = md().renderToIncrementalDOM('markdown-it-incremental-dom')
 
       IncrementalDOM.patch(document.body, func)
-      assert(document.body.innerHTML === '<p>markdown-it-incremental-dom</p>')
+      expect(document.body.innerHTML).toBe('<p>markdown-it-incremental-dom</p>')
     })
   })
 
@@ -100,7 +95,7 @@ describe('markdown-it-incremental-dom', () => {
       )
 
       IncrementalDOM.patch(document.body, func)
-      assert(document.body.innerHTML === 'markdown-it-incremental-dom')
+      expect(document.body.innerHTML).toBe('markdown-it-incremental-dom')
     })
   })
 })
