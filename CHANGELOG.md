@@ -2,9 +2,14 @@
 
 ## [Unreleased]
 
+### Breaking
+
+- No longer support Node < v6.14.2 (Boron Maintenance LTS release).
+
 ### Changed
 
-- Upgrade Node LTS and dependencies to latest version ([#31](https://github.com/yhatt/markdown-it-incremental-dom/pull/31))
+- Upgrade Node LTS to v8.11.4 and dependent packages to latest version
+- Migrate test framework from mocha to Jest
 
 ## v1.3.0 - 2018-02-15
 
