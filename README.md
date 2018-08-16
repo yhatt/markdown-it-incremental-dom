@@ -13,8 +13,8 @@ Let's see key features: **[https://yhatt.github.io/markdown-it-incremental-dom/]
 
 ## Requirement
 
-* [markdown-it](https://github.com/markdown-it/markdown-it) >= 4.0.0 (Recommend latest version >= 8.4.0, that this plugin use it)
-* [Incremental DOM](https://github.com/google/incremental-dom) >= 0.5.x
+- [markdown-it](https://github.com/markdown-it/markdown-it) >= 4.0.0 (Recommend latest version >= 8.4.0, that this plugin use it)
+- [Incremental DOM](https://github.com/google/incremental-dom) >= 0.5.x
 
 ## Examples
 
@@ -69,8 +69,8 @@ You can use [the recent version through CDN](https://cdn.jsdelivr.net/npm/markdo
 <script src="https://cdn.jsdelivr.net/npm/markdown-it-incremental-dom@1/dist/markdown-it-incremental-dom.min.js"></script>
 ```
 
-* **[Compressed (Recommend)](https://cdn.jsdelivr.net/npm/markdown-it-incremental-dom@1/dist/markdown-it-incremental-dom.min.js)**
-* [Uncompressed](https://cdn.jsdelivr.net/npm/markdown-it-incremental-dom@1/dist/markdown-it-incremental-dom.js)
+- **[Compressed (Recommend)](https://cdn.jsdelivr.net/npm/markdown-it-incremental-dom@1/dist/markdown-it-incremental-dom.min.js)**
+- [Uncompressed](https://cdn.jsdelivr.net/npm/markdown-it-incremental-dom@1/dist/markdown-it-incremental-dom.js)
 
 ## Installation
 
@@ -118,7 +118,7 @@ require('markdown-it')().use(
 )
 ```
 
-* **`incrementalizeDefaultRules`**: For better performance, this plugin would override a few default renderer rules only when you calls injected methods. If the other plugins that override default rules have occurred any problem, You can disable overriding by setting `false`. _(`true` by default)_
+- **`incrementalizeDefaultRules`**: For better performance, this plugin would override a few default renderer rules only when you calls injected methods. If the other plugins that override default rules have occurred any problem, You can disable overriding by setting `false`. _(`true` by default)_
 
 ### Rendering methods
 
