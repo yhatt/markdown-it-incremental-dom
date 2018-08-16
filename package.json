@@ -27,7 +27,7 @@
     "clean": "npm-run-all --npm-path yarn --parallel clean:*",
     "clean:lib": "rimraf lib",
     "clean:dist": "rimraf dist",
-    "coveralls": "nyc report --reporter=text-lcov | coveralls",
+    "coveralls": "cat coverage/lcov.info | coveralls",
     "format": "prettier \"**/*.{md,json,css}\"",
     "format:check": "yarn --mutex file run format -l",
     "lint": "eslint .",
