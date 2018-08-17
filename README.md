@@ -63,14 +63,14 @@ Define as `window.markdownitIncrementalDOM`.
 
 #### CDN
 
-You can use [the recent version through CDN](https://cdn.jsdelivr.net/npm/markdown-it-incremental-dom@1/dist/markdown-it-incremental-dom.min.js) provides by [jsDelivr](https://www.jsdelivr.com/).
+You can use [the recent version through CDN](https://cdn.jsdelivr.net/npm/markdown-it-incremental-dom@2/dist/markdown-it-incremental-dom.min.js) provides by [jsDelivr](https://www.jsdelivr.com/).
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/markdown-it-incremental-dom@1/dist/markdown-it-incremental-dom.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/markdown-it-incremental-dom@2/dist/markdown-it-incremental-dom.min.js"></script>
 ```
 
-- **[Compressed (Recommend)](https://cdn.jsdelivr.net/npm/markdown-it-incremental-dom@1/dist/markdown-it-incremental-dom.min.js)**
-- [Uncompressed](https://cdn.jsdelivr.net/npm/markdown-it-incremental-dom@1/dist/markdown-it-incremental-dom.js)
+- **[Compressed (Recommend)](https://cdn.jsdelivr.net/npm/markdown-it-incremental-dom@2/dist/markdown-it-incremental-dom.min.js)**
+- [Uncompressed](https://cdn.jsdelivr.net/npm/markdown-it-incremental-dom@2/dist/markdown-it-incremental-dom.js)
 
 ## Installation
 
