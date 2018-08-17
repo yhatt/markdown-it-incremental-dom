@@ -1,18 +1,11 @@
 {
-  "presets": [["@babel/preset-env", { "targets": { "node": "4.2" } }]],
+  "presets": [["@babel/preset-env", { "targets": { "node": "6.14" } }]],
   "plugins": [
-    ["@babel/plugin-proposal-object-rest-spread", { "useBuiltIns": true }],
-    "add-module-exports"
+    ["@babel/plugin-proposal-object-rest-spread", { "useBuiltIns": true }]
   ],
   "env": {
     "test": {
-      "presets": [["@babel/preset-env", { "targets": { "node": "current" } }]],
-      "plugins": [
-        ["@babel/plugin-proposal-object-rest-spread", { "useBuiltIns": true }],
-        "babel-plugin-empower-assert",
-        "babel-plugin-espower",
-        "istanbul"
-      ]
+      "presets": [["@babel/preset-env", { "targets": { "node": "current" } }]]
     }
   }
 }

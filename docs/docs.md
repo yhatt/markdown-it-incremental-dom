@@ -4,16 +4,16 @@ A [markdown-it](https://github.com/markdown-it/markdown-it) renderer plugin by u
 
 ## Features
 
-* [markdown-it](https://github.com/markdown-it/markdown-it) could receive better rendering performance powered by [Incremental DOM](https://github.com/google/incremental-dom).
-* [API](https://github.com/yhatt/markdown-it-incremental-dom/blob/master/README.md#usage) is compatible with existing render method.
-* It can use with [other markdown-it plugins](https://www.npmjs.com/browse/keyword/markdown-it-plugin). (Of course incrementalize!)
+- [markdown-it](https://github.com/markdown-it/markdown-it) could receive better rendering performance powered by [Incremental DOM](https://github.com/google/incremental-dom).
+- [API](https://github.com/yhatt/markdown-it-incremental-dom/blob/master/README.md#usage) is compatible with existing render method.
+- It can use with [other markdown-it plugins](https://www.npmjs.com/browse/keyword/markdown-it-plugin). (Of course incrementalize!)
 
 ## How to use
 
 Refer below for the examples and usages.
 
-* **Github: [yhatt/markdown-it-incremental-dom](https://github.com/yhatt/markdown-it-incremental-dom)**
-* **npm: [markdown-it-incremental-dom](https://www.npmjs.com/package/markdown-it-incremental-dom)**
+- **Github: [yhatt/markdown-it-incremental-dom](https://github.com/yhatt/markdown-it-incremental-dom)**
+- **npm: [markdown-it-incremental-dom](https://www.npmjs.com/package/markdown-it-incremental-dom)**
 
 ## Why Incremental DOM?
 
