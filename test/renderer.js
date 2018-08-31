@@ -147,6 +147,18 @@ describe('Renderer', () => {
     })
   })
 
+  context('with overriden renderers', () => {
+    context('when HTML parser is used only in opening element', () => {
+      it('renders correctly', () => {
+        const markdown = md()
+        markdown.renderer.rules.paragraph_open = () => '<p class="overriden">'
+        markdown.idom('Render correctly')
+
+        expect(document.querySelector('p.overriden')).toBeTruthy()
+      })
+    })
+  })
+
   context('with other plugins', () => {
     context('when markdown-it-sub is injected (simple plugin)', () => {
       const instance = md().use(MarkdownItSub)
