@@ -34,7 +34,8 @@
     "prepack": "npm-run-all --npm-path yarn --parallel lint test:coverage --sequential build",
     "preversion": "npm-run-all --npm-path yarn --parallel format:check lint test:coverage",
     "test": "jest",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "version": "node version.js && git add -A CHANGELOG.md"
   },
   "license": "MIT",
   "files": [

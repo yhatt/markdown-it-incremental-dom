@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Added
+
+- Add versioning script ([#35](https://github.com/yhatt/markdown-it-incremental-dom/pull/35))
+
 ## v2.0.0 - 2018-08-17
 
 ### Breaking
