@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Fixed
+
+- Fix twice element closing by htmlparser2 ([#34](https://github.com/yhatt/markdown-it-incremental-dom/pull/34))
+
 ### Added
 
 - Add versioning script ([#35](https://github.com/yhatt/markdown-it-incremental-dom/pull/35))

@@ -1,15 +1,31 @@
 import Parser from 'htmlparser2/lib/Parser'
 
 export default function(incrementalDom) {
-  const {
-    attr,
-    elementClose,
-    elementOpen,
-    elementOpenEnd,
-    elementOpenStart,
-    elementVoid,
-    text,
-  } = incrementalDom
+  const autoClosingStack = []
+
+  const autoClosing = () => {
+    const stack = autoClosingStack.shift()
+    if (!stack) return
+
+    stack.reverse().forEach(tag => incrementalDom.elementClose(tag))
+  }
+
+  const { attr, elementOpenEnd, elementVoid, text } = incrementalDom
+
+  const elementOpen = (tag, ...args) => {
+    if (autoClosingStack.length > 0) autoClosingStack[0].push(tag)
+    incrementalDom.elementOpen(tag, ...args)
+  }
+
+  const elementOpenStart = tag => {
+    if (autoClosingStack.length > 0) autoClosingStack[0].push(tag)
+    incrementalDom.elementOpenStart(tag)
+  }
+
+  const elementClose = tag => {
+    if (autoClosingStack.length > 0) autoClosingStack[0].pop()
+    incrementalDom.elementClose(tag)
+  }
 
   const sanitizeName = name => name.replace(/[^-:\w]/g, '')
 
@@ -42,6 +58,7 @@ export default function(incrementalDom) {
 
     renderInline(tokens, options, env) {
       return () => {
+        autoClosingStack.unshift([])
         tokens.forEach((current, i) => {
           const { type } = current
 
@@ -51,6 +68,7 @@ export default function(incrementalDom) {
             this.renderToken(tokens, i, options)()
           }
         })
+        autoClosing()
       }
     },
 
@@ -74,6 +92,7 @@ export default function(incrementalDom) {
 
     render(tokens, options, env) {
       return () => {
+        autoClosingStack.unshift([])
         tokens.forEach((current, i) => {
           const { type } = current
 
@@ -85,7 +104,7 @@ export default function(incrementalDom) {
             this.renderToken(tokens, i, options, env)()
           }
         })
-        iDOMParser.end()
+        autoClosing()
         iDOMParser.reset()
       }
     },
