@@ -85,7 +85,6 @@ export default function(incrementalDom) {
             this.renderToken(tokens, i, options, env)()
           }
         })
-        iDOMParser.end()
         iDOMParser.reset()
       }
     },
