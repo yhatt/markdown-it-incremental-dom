@@ -1,6 +1,6 @@
 {
   "name": "markdown-it-incremental-dom",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "markdown-it renderer plugin by using Incremental DOM.",
   "main": "lib/markdown-it-incremental-dom.js",
   "engines": {
@@ -74,7 +74,7 @@
     "markdown-it": ">=4.0.0"
   },
   "dependencies": {
-    "htmlparser2": "^3.9.2"
+    "htmlparser2": "^3.10.0"
   },
   "jest": {
     "collectCoverageFrom": [
