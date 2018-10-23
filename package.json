@@ -74,7 +74,7 @@
     "markdown-it": ">=4.0.0"
   },
   "dependencies": {
-    "htmlparser2": "^3.9.2"
+    "htmlparser2": "^3.10.0"
   },
   "jest": {
     "collectCoverageFrom": [
