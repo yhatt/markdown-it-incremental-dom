@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Fixed
+
+- Fix the self-closing tags of SVG and MathML ([#40](https://github.com/yhatt/markdown-it-incremental-dom/pull/40) by [@m93a](https://github.com/m93a))
+
 ## v2.0.1 - 2018-08-31
 
 ### Fixed
