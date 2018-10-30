@@ -97,6 +97,20 @@ describe('Renderer', () => {
       it('renders invalid HTML', () => {
         md({ html: true }).idom('<div>inva<lid</div>')
         expect(document.querySelector('div').textContent).toBe('inva')
+
+        md({ html: true }).idom('<p <inva>lid</p>')
+        expect(document.querySelector('p').textContent).toBe('lid')
+
+        // https://github.com/yhatt/markdown-it-incremental-dom/issues/39
+        const invalidLink = dedent`
+          <a href="https://example.com/"
+            <x>
+            style="display:none;"
+          >
+          link
+          </a>
+        `
+        expect(() => md({ html: true }).idom(invalidLink)).not.toThrowError()
       })
 
       it('renders invalid nesting HTML', () => {
