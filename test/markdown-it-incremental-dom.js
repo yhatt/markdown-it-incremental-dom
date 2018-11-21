@@ -1,4 +1,5 @@
-import IncrementalDOM from 'incremental-dom'
+import * as IncrementalDOM from 'incremental-dom'
+import context from 'jest-plugin-context'
 import MarkdownIt from 'markdown-it'
 import { Parser } from 'htmlparser2'
 import MarkdownItIncrementalDOM from '../src/markdown-it-incremental-dom'

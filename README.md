@@ -18,15 +18,14 @@ Let's see key features: **[https://yhatt.github.io/markdown-it-incremental-dom/]
 
 ## Examples
 
-### Node.js
+### Node
 
 ```javascript
-const IncrementalDOM = require('incremental-dom')
+import * as IncrementalDOM from 'incremental-dom'
+import MarkdownIt from 'markdown-it'
+import MarkdownItIncrementalDOM from 'markdown-it-incremental-dom'
 
-const md = require('markdown-it')().use(
-  require('markdown-it-incremental-dom'),
-  IncrementalDOM
-)
+const md = new MarkdownIt().use(MarkdownItIncrementalDOM, IncrementalDOM)
 
 IncrementalDOM.patch(
   document.getElementById('target'),
@@ -39,25 +38,25 @@ IncrementalDOM.patch(
 Define as `window.markdownitIncrementalDOM`.
 
 ```html
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-<head>
-  <script src="https://ajax.googleapis.com/ajax/libs/incrementaldom/0.5.1/incremental-dom-min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/markdown-it@8.4.0/dist/markdown-it.min.js"></script>
-  <script src="./node_modules/markdown-it-incremental-dom/dist/markdown-it-incremental-dom.min.js"></script>
-</head>
-<body>
-  <div id="target"></div>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/incremental-dom@0.6.0/dist/incremental-dom-min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/markdown-it@8.4.2/dist/markdown-it.min.js"></script>
+    <script src="./node_modules/markdown-it-incremental-dom/dist/markdown-it-incremental-dom.min.js"></script>
+  </head>
+  <body>
+    <div id="target"></div>
 
-  <script>
-    var md = new markdownit().use(markdownitIncrementalDOM)
+    <script>
+      const md = markdownit().use(markdownitIncrementalDOM)
 
-    IncrementalDOM.patch(
-      document.getElementById('target'),
-      md.renderToIncrementalDOM('# Hello, Incremental DOM!')
-    )
-  </script>
-</body>
+      IncrementalDOM.patch(
+        document.getElementById('target'),
+        md.renderToIncrementalDOM('# Hello, Incremental DOM!')
+      )
+    </script>
+  </body>
 </html>
 ```
 
@@ -93,11 +92,11 @@ $ npm install markdown-it-incremental-dom --save
 When injecting this plugin by `.use()`, _you should pass Incremental DOM class as second argument._ (`window.IncrementalDOM` by default)
 
 ```javascript
-const IncrementalDOM = require('incremental-dom')
-const md = require('markdown-it')().use(
-  require('markdown-it-incremental-dom'),
-  IncrementalDOM
-)
+import * as IncrementalDOM from 'incremental-dom'
+import MarkdownIt from 'markdown-it'
+import MarkdownItIncrementalDOM from 'markdown-it-incremental-dom'
+
+const md = new MarkdownIt().use(MarkdownItIncrementalDOM, IncrementalDOM)
 ```
 
 If it is succeed, [2 new rendering methods](#rendering-methods) would be injected to instance.
@@ -109,13 +108,9 @@ If it is succeed, [2 new rendering methods](#rendering-methods) would be injecte
 You can pass option object as third argument. See below:
 
 ```javascript
-require('markdown-it')().use(
-  require('markdown-it-incremental-dom'),
-  IncrementalDOM,
-  {
-    incrementalizeDefaultRules: true,
-  }
-)
+new MarkdownIt().use(MarkdownItIncrementalDOM, IncrementalDOM, {
+  incrementalizeDefaultRules: false,
+})
 ```
 
 - **`incrementalizeDefaultRules`**: For better performance, this plugin would override a few default renderer rules only when you calls injected methods. If the other plugins that override default rules have occurred any problem, You can disable overriding by setting `false`. _(`true` by default)_
@@ -174,10 +169,10 @@ $ yarn build
 ### Lint & Format
 
 ```bash
-$ yarn lint            # Run ESLint and Prettier to JS
-$ yarn lint --fix      # Fix lint and formatting of JS
+$ yarn lint            # Run ESLint
+$ yarn lint --fix      # Fix lint
 
-$ yarn format:check    # Run Prettier to Markdown, JSON and CSS
+$ yarn format:check    # Run Prettier
 $ yarn format --write  # Fix formatting by Prettier
 ```
 

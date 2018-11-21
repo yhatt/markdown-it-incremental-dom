@@ -1,12 +1,13 @@
-;(function() {
-  document.addEventListener('DOMContentLoaded', function() {
-    var text = document.querySelector('#text')
-    var target = document.querySelector('#target')
-    var options = document.querySelectorAll('.markdown-options')
-    var method = document.querySelector('.markdown-options:checked').value
-    var md = markdownit().use(markdownitIncrementalDOM)
+;(() => {
+  document.addEventListener('DOMContentLoaded', () => {
+    const md = markdownit().use(markdownitIncrementalDOM)
 
-    var render = function() {
+    const text = document.querySelector('#text')
+    const target = document.querySelector('#target')
+    const options = document.querySelectorAll('.markdown-options')
+    let method = document.querySelector('.markdown-options:checked').value
+
+    const render = function() {
       if (method === 'incrementalDOM') {
         IncrementalDOM.patch(target, md.renderToIncrementalDOM(text.value))
       } else {
@@ -14,13 +15,13 @@
       }
     }
 
-    var initializeRendering = function() {
+    const initializeRendering = function() {
       text.removeAttribute('disabled')
       text.removeAttribute('placeholder')
       text.addEventListener('input', render)
 
-      Array.prototype.forEach.call(options, function(elm) {
-        elm.addEventListener('change', function() {
+      Array.prototype.forEach.call(options, elm => {
+        elm.addEventListener('change', function onChange() {
           method = this.value
           render()
         })
@@ -31,18 +32,15 @@
 
     text.setAttribute('disabled', 'disabled')
 
-    superagent
-      .get('./docs.md')
-      .set('Content-Type', 'text/plain')
-      .then(
-        function(res) {
-          text.value = res.text
-          initializeRendering()
-        },
-        function() {
-          text.value = '*Failed initializing docs.*'
-          initializeRendering()
-        }
-      )
+    fetch('./docs.md', { headers: { 'Content-Type': 'text/plain' } })
+      .then(res => res.text())
+      .then(t => {
+        text.value = t
+        initializeRendering()
+      })
+      .catch(() => {
+        text.value = '*Failed initializing docs.*'
+        initializeRendering()
+      })
   })
 })()

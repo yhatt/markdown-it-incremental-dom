@@ -2,6 +2,17 @@
 
 ## [Unreleased]
 
+### Added
+
+- Support Node 10 LTS
+
+### Changed
+
+- Upgrade dependent packges to latest, includes [incremental-dom 0.6.0](https://github.com/google/incremental-dom/releases/tag/0.6.0)
+- Update incremental-dom CDN to use [jsDelivr](https://cdn.jsdelivr.net/npm/incremental-dom@0.6.0/dist/incremental-dom-min.js) instead of Google (0.6.0 is not provided)
+- Modernize example codes and demo JS
+- Apply Prettier code formatting for configuration files and demo HTML
+
 ## v2.0.2 - 2018-10-23
 
 ### Fixed

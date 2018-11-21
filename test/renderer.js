@@ -1,8 +1,9 @@
 import { stripIndents } from 'common-tags'
+import context from 'jest-plugin-context'
 import MarkdownIt from 'markdown-it'
 import MarkdownItFootnote from 'markdown-it-footnote'
 import MarkdownItSub from 'markdown-it-sub'
-import IncrementalDOM from 'incremental-dom'
+import * as IncrementalDOM from 'incremental-dom'
 import MarkdownItIncrementalDOM from '../src/markdown-it-incremental-dom'
 
 describe('Renderer', () => {
