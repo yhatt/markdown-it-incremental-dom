@@ -97,7 +97,6 @@ import MarkdownIt from 'markdown-it'
 import MarkdownItIncrementalDOM from 'markdown-it-incremental-dom'
 
 const md = new MarkdownIt().use(MarkdownItIncrementalDOM, IncrementalDOM)
-)
 ```
 
 If it is succeed, [2 new rendering methods](#rendering-methods) would be injected to instance.
