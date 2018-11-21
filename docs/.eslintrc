@@ -1,8 +1,0 @@
-env:
-  browser: true
-  node: false
-  es6: false
-
-rules:
-  no-var: off
-  prefer-arrow-callback: off
