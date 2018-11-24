@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Security
+
+- Upgrade `npm-run-all` package to get rid of the malicious attack by `flatmap-stream` ([#42](https://github.com/yhatt/markdown-it-incremental-dom/pull/42))
+
 ## v2.1.0 - 2018-11-21
 
 ### Added
